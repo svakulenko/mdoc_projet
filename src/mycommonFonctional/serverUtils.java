@@ -1,0 +1,68 @@
+package mycommonFonctional;
+
+import java.util.List;
+
+import mydomain.Contact;
+
+
+public class serverUtils {
+	private serverUtils() {
+	}
+
+	static public String getNewParameter(String name, String value) {
+		return ("?" + name + "=" + value);
+	}
+
+	/*
+	static public String generateRow(String key, String value) {
+		String generatedHtml = "";
+		generatedHtml += "<tr>";
+		generatedHtml += "<td style=\"width: 140px;\">" + key + "</td>";
+		generatedHtml += "<td valign=\"top\">" + value + "</td>";
+		generatedHtml += "</tr>";
+		return generatedHtml;
+	}
+	*/
+	static public String generateRow(String hId, String hFN, String hLN, String E) {
+		String generatedHtml = "";
+		generatedHtml += "<tr>";
+		generatedHtml += "<td style=\"width: 140px;\">" + hId + "</td>";
+		generatedHtml += "<td valign=\"top\">" + hFN + "</td>";
+		generatedHtml += "<td valign=\"top\">" + hLN + "</td>";
+		generatedHtml += "<td valign=\"top\">" + E + "</td>";
+		generatedHtml += "</tr>";
+		return generatedHtml;
+	}
+	static public String generateRow(Contact c) {
+		String generatedHtml = "";
+		generatedHtml += "<tr>";
+		generatedHtml += "<td style=\"width: 140px;\">" + c.getId() + "</td>";
+		generatedHtml += "<td valign=\"top\">" + c.getFirstName() + "</td>";
+		generatedHtml += "<td valign=\"top\">" + c.getLastName() + "</td>";
+		generatedHtml += "<td valign=\"top\">" + c.getEmail() + "</td>";
+		generatedHtml += "</tr>";
+		return generatedHtml;
+	}
+
+	static public String generateTable(List<Contact> lst, String header) {
+		String generatedHtml = "";
+		if (lst.size() != 0) {
+
+			generatedHtml += "<table><tbody>";
+			generatedHtml += "<TABLE BORDER=\"1\">";
+			generatedHtml += "<CAPTION><B>" + header + "</B> </CAPTION>";
+			generatedHtml += generateRow("<B>ID</B>", "<B>First Name</B>", "<B>Last Name</B>", "<B>Email</B>");
+			for (Contact c : lst) {
+				
+				generatedHtml += generateRow(c);
+//				generatedHtml += generateRow("ID", ""+c.getId());
+//				generatedHtml += generateRow("FirstName", c.getFirstName());
+//				generatedHtml += generateRow("LastName ", c.getLastName());
+//				generatedHtml += generateRow("Email ", c.getEmail());
+			}
+			generatedHtml += "</tbody></table>";
+		}
+		System.out.println("gen html" + generatedHtml);
+		return generatedHtml;
+	}
+}

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	
+<!-- MAIN BEANS  START -->	
+	<bean id="homenumber" class="mydomain.PhoneNumber">
+		<property name="id" value="1"/>
+		<property name="phoneKind" value="home"/>
+		<property name="phoneNumber" value="99999"/>
+		  <property name="contact" ref="contact"/>
+		
+	</bean>
+
+
+	<bean id="mobilenumber" class="mydomain.PhoneNumber">
+		<property name="id" value="1"/>
+		<property name="phoneKind" value="mobile"/>
+		<property name="phoneNumber" value="88888"/>
+		<!-- <property name="contact" ref="contact"/>
+		-->
+	</bean>
+	
+	<bean id="address" class="mydomain.Address">
+		<property name="addId" value="1"/>
+		<property name="street" value="rue address"/>
+		<property name="city" value="city address"/>
+		<property name="zip" value="75000"/>
+		<property name="country" value="France"/>
+		<!-- <property name="contact" ref="contact"/>
+		-->
+	</bean>
+	
+	<bean id="contactgroup" class="mydomain.ContactGroup">
+		<property name="groupId" value="1"/>
+		<property name="groupName" value="Default Name"/>
+		<property name="contacts">
+			<set>
+				<ref bean="contact"/>
+			</set>	
+		</property>
+	</bean>
+	
+	
+		<bean id="contact" class="mydomain.Contact">
+		<property name="id" value="1"/>
+		<property name="email" value="spring@gmail.com"/>
+		<property name="firstName" value="Spring First"/>
+		<property name="lastName"  value="Spring Last"/>
+		<property name="add" 	   ref="address"/>
+	<property name="phoneNumbers">
+		<set>
+				<ref bean="homenumber"/>
+				<ref bean="mobilenumber"/>
+		</set>
+	</property>
+		
+	<property name="contactgroup">
+			<set>
+				<ref bean="contactgroup"/>
+			</set>	
+		</property>
+	</bean>
+	
+	<!-- DAO CONTACT, CODE INJECTION WITH CONSTRUCTOR -->
+	<bean id="daocontactContr" class="dbHandlers.DAOContact">
+		<constructor-arg ref="contact"/>
+	</bean>
+	
+	<!-- DAO CONTACT, CODE INJECTION WITH PARAMETER (DEFAULT) -->
+	<bean id="daocontact" class="dbHandlers.DAOContact">
+		<property name="contact" ref="contact"/>
+		<property name="sessionFactory" ref="mySessionFactory"/>
+	</bean>
+	
+
+
+
+<!-- ASPECTS -->
+<bean id="emailerLogger" class="example.EmailLogger"/>
+<aop:config>
+<aop:aspect id="emailLoggerBean" ref="emailerLogger">
+<aop:around
+pointcut="execution(* *hAddContact( *, *, *, String)) and args(*, FirstName, *, *)"
+method="logBeforeA" arg-names="pjp, FirstName"/>
+</aop:aspect>
+</aop:config>
+<!-- MAIN BEANS  END -->	
+
+
+<!-- HIBERNATE PART START -->
+
+
+<!-- SESSION FACTORY -->
+<bean id="mySessionFactory"
+class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+<property name="dataSource" ref="myDataSource"/>
+<property name="mappingResources">
+<list>
+<value>address.hbm.xml</value>
+<value>contact.hbm.xml</value>
+<value>contactgroup.hbm.xml</value>
+<value>phonenumber.hbm.xml</value>
+</list>
+</property>
+<property name="hibernateProperties">
+<props>
+<prop
+key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+</props>
+</property>
+</bean>
+
+<!-- DATA SOURCE -->
+<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource"
+destroy-method="close">
+<property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
+<property name="url" value="jdbc:hsqldb:hsql://localhost:9001"/>
+<property name="username" value="3151569"/>
+<property name="password" value=""/>
+</bean>
+
+<!-- HIBERNATE MANAGER-->
+<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+<property name="sessionFactory" ref="mySessionFactory"/>
+</bean>
+
+<!-- HIBERNATE PART END -->
+
+
+
+
+
+
+
+</beans>
