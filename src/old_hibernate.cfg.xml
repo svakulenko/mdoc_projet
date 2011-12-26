@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd"
+		>
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost/test</property>
+        <property name="hibernate.connection.username">3151569</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hbm2ddl.auto">update</property>
+     
+        <mapping resource="mydomain/address.hbm.xml"/>
+        <mapping resource="mydomain/contact.hbm.xml"/>
+        <mapping resource="mydomain/contactgroup.hbm.xml"/>
+        <mapping resource="mydomain/phonenumber.hbm.xml"/>
+
+
+        
+        
+        
+        
+    </session-factory>
+</hibernate-configuration>
