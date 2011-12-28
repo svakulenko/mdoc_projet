@@ -33,8 +33,8 @@ public class DAOContact extends DAOHibernateManager implements IDAOContact {
 	}
 
 	
-	String opFait = "l'operation a été fait";
-	String opNoRecords = "Pas de records dans dbase";
+	//String opFait = "l'operation a été fait";
+	//String opNoRecords = "Pas de records dans dbase";
 
 
 	
@@ -54,7 +54,7 @@ public class DAOContact extends DAOHibernateManager implements IDAOContact {
 					arg0.delete(c);
 				}
 				
-				return "table est effacé";
+				return serverUtils.opTableRemoved;
 			}
 		});
 		
@@ -73,7 +73,8 @@ public class DAOContact extends DAOHibernateManager implements IDAOContact {
 		c.setLastName(LastName);
 		c.setEmail(Email);
 		getHibernateTemplate().save(c);
-		rvalue = opFait;
+		rvalue = serverUtils.opFait;
+		
 
 		return rvalue;
 
@@ -92,7 +93,7 @@ public class DAOContact extends DAOHibernateManager implements IDAOContact {
 		if (l.size() != 0)
 			rvalue = serverUtils.generateTable(l, "Contact table");
 		else
-			rvalue = opNoRecords;
+			rvalue = serverUtils.opNoRecods;
 
 
 		return rvalue;
@@ -119,7 +120,7 @@ public class DAOContact extends DAOHibernateManager implements IDAOContact {
 					arg0.delete(c);
 				}
 				
-				return opFait;
+				return serverUtils.opFait;
 			}
 		});
 				
@@ -135,7 +136,7 @@ public class DAOContact extends DAOHibernateManager implements IDAOContact {
 		System.out.println("list ref=" + l);
 		
         if (l.size() == 0)
-        	rvalue = opNoRecords;
+        	rvalue = serverUtils.opNoRecods;
         else
         	rvalue = serverUtils.generateTable(l, "Contact table");
         

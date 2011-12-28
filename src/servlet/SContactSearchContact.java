@@ -48,7 +48,8 @@ public class SContactSearchContact extends HttpServlet {
 		//DAOContact daoContact = new DAOContact();
 
 		String dbOutput = daoContact.hSearchContact(id);
-		String responseUrl = "/searchContact.jsp" + serverUtils.getNewParameter("dbOutput", dbOutput);
+
+		String responseUrl = "/" + "accueil.jsp" + serverUtils.getNewParameter("dbOutputRaw", dbOutput);
 		System.out.println("::doPost responseUrl=" + responseUrl);
 
 		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );

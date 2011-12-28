@@ -4,20 +4,37 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>acceuil page</title>
+<link href="cssStyle.css" rel="stylesheet" type="text/css">
+<title>Mdoc projet (JSP, Hibernate, Spring)</title>
 </head>
 <body>
 
-<h1>acceuil page</h1>
 
-<a href="addContact.jsp">add contact</a>
-<a href="removeContact.jsp">remove contact</a>
-<a href="searchContact.jsp">search contact</a>
-<a href="updateContact.jsp">update contact</a>
-<a href="SContactClearTable">clear table</a>
-<a href="SContactShowAll">showTable</a>
+<div class="MainDiv">
 
-<br/>
-<jsp:include page="/commonPages/dbdataOutput.jsp" />
+  <div class="header">
+    <div align="center"><h4>MDOC Projet: accueil page</h4></div>
+  </div>
+  
+  <div class="sidebar">
+<a href="addContact.jsp">add contact</a><br>
+<a href="removeContact.jsp">remove contact</a><br>
+<a href="searchContact.jsp">search contact</a><br>
+<a href="updateContact.jsp">update contact</a><br>
+<a href="SContactClearTable">clear table</a><br>
+<a href="SContactShowAll">showTable</a><br>
+  </div>
+  
+  <div class="mainBody">
+  <jsp:include page="/commonPages/dbdataOutput.jsp" /><br>
+  </div>
+  
+  <jsp:include page="/commonPages/footer.jsp" />
+
+</div>
+
+
+
 </body>
+
 </html>
