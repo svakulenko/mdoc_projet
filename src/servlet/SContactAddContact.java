@@ -56,18 +56,22 @@ public class SContactAddContact extends HttpServlet {
 		
 		ApplicationContext  appCtx =	WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		
-		IDAOContact dao = (IDAOContact) appCtx.getBean("daocontactContructor");
-        Iterator<PhoneNumber> iterator = dao.getContact().getPhoneNumbers().iterator();
+		IDAOContact daoContact = (IDAOContact) appCtx.getBean("daoContactConstructor");
+        Iterator<PhoneNumber> iterator = daoContact.getContact().getPhoneNumbers().iterator();
         
         // Testing it values
         // Address;
-        System.out.println(dao.getContact().getAdd().toString());
+        System.out.println(daoContact.getContact().getAdd().toString());
         PhoneNumber phoneNumber = null;
         while(iterator.hasNext())
         {
         	phoneNumber = iterator.next();
         	System.out.println("Kind: " + phoneNumber.getPhoneKind() + " Number: " + phoneNumber.getPhoneNumber());
         }
+        
+        IDAOEntreprise daoEntreprise = (IDAOEntreprise) appCtx.getBean("daoEntrepriseConstructor");
+        System.out.println(daoEntreprise.toString());
+        
         
 //		dao = (IDAOContact) appCtx.getBean("daocontact");
 //		System.out.println("dao.contact=" + dao.getContact());

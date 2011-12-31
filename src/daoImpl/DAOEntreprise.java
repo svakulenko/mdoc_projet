@@ -8,13 +8,19 @@ import daoInterface.IDAOEntreprise;
 public class DAOEntreprise implements IDAOEntreprise 
 {
 	private Entreprise entreprise;
+	public DAOEntreprise(){
+	}
+	public DAOEntreprise(Entreprise entreprise)
+	{
+		this.entreprise = entreprise;
+	}
+	
 	@Override
 	public Entreprise getEntreprise() 
 	{
 		// TODO Auto-generated method stub
 		return this.entreprise;
 	}
-
 	@Override
 	public void setEntreprise(Entreprise entreprise) 
 	{

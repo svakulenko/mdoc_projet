@@ -53,7 +53,7 @@
     <table><tbody>
             <tr>
                 <td style="width: 140px;">NumSiret:</td>
-                <td valign="top"> <input type="text"  name="numsiret" size="25" value="XXXXXXXXXX" > </td>
+                <td valign="top"> <input type="text"  name="numsiret" size="25" value=111111 > </td>
             </tr>
 
             <tr>

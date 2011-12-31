@@ -47,8 +47,8 @@
 	<bean id="contact" class="mydomain.Contact">
 		<property name="id" value="1"/>
 		<property name="email" value="spring@gmail.com"/>
-		<property name="firstName" value="Spring First"/>
-		<property name="lastName"  value="Spring Last"/>
+		<property name="firstName" value="Contact First"/>
+		<property name="lastName"  value="Contact Last"/>
 		<property name="add" 	   ref="address"/>
 		<property name="phoneNumbers">
 			<set>
@@ -62,12 +62,39 @@
 			</set>
 		</property>
 	</bean>
-
+			
+	<bean id="entreprise" class="mydomain.Entreprise">
+		<property name="id" value="1"/>
+		<property name="numSiret" value="1111111" />
+		<property name="email" value="spring@gmail.com"/>
+		<property name="firstName" value="Entreprise First"/>
+		<property name="lastName"  value="Entreprise Last"/>
+		<property name="add" 	   ref="address"/>
+		<property name="phoneNumbers">
+			<set>
+				<ref bean="homenumber"/>
+				<ref bean="mobilenumber"/>
+			</set>
+		</property>
+		<property name="contactgroup">
+			<set>
+				<ref bean="contactgroup"/>
+			</set>
+		</property>
+	</bean>
+	
+	
+	
 	<!-- DAO CONTACT, CODE INJECTION WITH CONSTRUCTOR -->
-	<bean id="daocontactContructor" class="daoImpl.DAOContact">
+	<bean id="daoContactConstructor" class="daoImpl.DAOContact">
 		<constructor-arg ref="contact"/>
 	</bean>
-
+	
+	<bean id="daoEntrepriseConstructor" class="daoImpl.DAOEntreprise">
+		<constructor-arg ref="entreprise"/>
+	</bean>
+	
+	
 	<!-- DAO CONTACT, CODE INJECTION WITH PARAMETER (DEFAULT) -->
 	<bean id="daocontactProperty" class="daoImpl.DAOContact">
 		<property name="contact" ref="contact"/>
