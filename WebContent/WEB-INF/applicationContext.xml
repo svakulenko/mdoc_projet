@@ -103,8 +103,8 @@ method="logBeforeA" arg-names="pjp, FirstName"/>
 destroy-method="close">
 <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 <property name="url" value="jdbc:mysql://localhost/test"/>
-<property name="username" value="3151569"/>
-<property name="password" value=""/>
+<property name="username" value="root"/>
+<property name="password" value="******"/>
 </bean>
 
 <!-- SESSION FACTORY -->
