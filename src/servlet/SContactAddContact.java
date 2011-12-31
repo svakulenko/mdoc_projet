@@ -12,13 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
-import mycommonFonctional.serverUtils;
+import mycommonFonctional.ServerUtils;
 import mydomain.PhoneNumber;
 
 import org.springframework.context.*;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import springi.*;
+import daoInterface.*;
+
 
 /**
  * Servlet implementation class SContactAddContact
@@ -42,54 +43,59 @@ public class SContactAddContact extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		System.out.println("SContact::doPost 1");
-		
-		
-
-
-		
-		String FirstName = request.getParameter("firstname");
-		String LastName = request.getParameter("lastname");
-		String Email    = request.getParameter("email");
+		String firstName = request.getParameter("firstname");
+		String lastName = request.getParameter("lastname");
+		String email    = request.getParameter("email");
 		String street = request.getParameter("street");	
-/*
 
-
-		String city = request.getParameter("city");
-		String zip    = request.getParameter("zip");
-		String country = request.getParameter("country");
-		String phonekind = request.getParameter("phonekind");
-		String phonenumber    = request.getParameter("phonenumber");
-*/	
 		System.out.println("street=" + street);
 		//DAOContact daoContact = new DAOContact();
 		
-		ApplicationContext  ac =	WebApplicationContextUtils.getWebApplicationContext(getServletContext());
-
+		ApplicationContext  appCtx =	WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		
-		IDAOContact dao = (IDAOContact) ac.getBean("daocontactContr");
-        Iterator<PhoneNumber> itr = dao.getContact().getPhoneNumbers().iterator();
-        while(itr.hasNext()){
-          System.out.println(itr.next().getPhoneKind());
+		IDAOContact dao = (IDAOContact) appCtx.getBean("daocontactContructor");
+        Iterator<PhoneNumber> iterator = dao.getContact().getPhoneNumbers().iterator();
+        
+        // Testing it values
+        // Address;
+        System.out.println(dao.getContact().getAdd().toString());
+        PhoneNumber phoneNumber = null;
+        while(iterator.hasNext())
+        {
+        	phoneNumber = iterator.next();
+        	System.out.println("Kind: " + phoneNumber.getPhoneKind() + " Number: " + phoneNumber.getPhoneNumber());
         }
         
-		dao = (IDAOContact) ac.getBean("daocontact");
-		System.out.println("dao.contact=" + dao.getContact());
-		itr = dao.getContact().getPhoneNumbers().iterator();
-        while(itr.hasNext()){
-          System.out.println(itr.next().getPhoneKind());
-        }
-		
-
-        
-		String dbOutput = dao.hAddContact(0, FirstName, LastName, Email);
-		
-		String responseUrl = "/addContact.jsp" + serverUtils.getNewParameter("dbOutput", dbOutput);
-		System.out.println("::doPost responseUrl=" + responseUrl);
-
-		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );
-		rd.forward(request, response);
+//		dao = (IDAOContact) appCtx.getBean("daocontact");
+//		System.out.println("dao.contact=" + dao.getContact());
+//		iterator = dao.getContact().getPhoneNumbers().iterator();
+//        
+//		while(iterator.hasNext())
+//        {
+//          System.out.println(iterator.next().getPhoneKind());
+//        }
+//		
+//
+//        
+//		String dbOutput = dao.hAddContact(0, FirstName, LastName, Email);
+//		
+//		String responseUrl = "/addContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
+//		System.out.println("::doPost responseUrl=" + responseUrl);
+//
+//		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );
+//		rd.forward(request, response);
 	}
 
 }
+
+
+/*
+String city = request.getParameter("city");
+String zip    = request.getParameter("zip");
+String country = request.getParameter("country");
+String phonekind = request.getParameter("phonekind");
+String phonenumber    = request.getParameter("phonenumber");
+*/	

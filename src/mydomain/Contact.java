@@ -6,17 +6,20 @@ import java.util.Set;
 
 
 public class Contact {
-	public Contact(){ 
+	
+	private long id;
+	private String email;
+	private String firstName;
+	private String lastName;
+	
+	private Set<PhoneNumber> phoneNumbers = new HashSet<PhoneNumber>(); 
+	private Set<ContactGroup> contactgroup = new HashSet<ContactGroup>();;
+	private Address add;
+	
+	public Contact()
+	{
     	id = -1;
     }
-	long   id;
-	String email;
-	String firstName;
-	String lastName;
-	
-	Set<PhoneNumber> phoneNumbers = new HashSet<PhoneNumber>(); 
-	Set<ContactGroup> contactgroup = new HashSet<ContactGroup>();;
-	Address add;
 	public Address getAdd() {
 		return add;
 		

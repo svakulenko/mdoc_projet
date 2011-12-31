@@ -8,12 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mycommonFonctional.serverUtils;
+import mycommonFonctional.ServerUtils;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import springi.IDAOContact;
+import daoInterface.IDAOContact;
+
 
 /**
  * Servlet implementation class SContactRemoveContact
@@ -49,7 +50,7 @@ public class SContactRemoveContact extends HttpServlet {
 		//DAOContact daoContact = new DAOContact();
 
 		String dbOutput = daoContact.deleteContact(id);
-		String responseUrl = "/removeContact.jsp" + serverUtils.getNewParameter("dbOutput", dbOutput);
+		String responseUrl = "/removeContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
 		System.out.println("::doPost responseUrl=" + responseUrl);
 
 		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );

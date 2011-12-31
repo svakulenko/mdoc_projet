@@ -8,12 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mycommonFonctional.serverUtils;
+import mycommonFonctional.ServerUtils;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import springi.IDAOContact;
+import daoInterface.IDAOContact;
+
 
 /**
  * Servlet implementation class SContactSearchContact
@@ -49,7 +50,7 @@ public class SContactSearchContact extends HttpServlet {
 
 		String dbOutput = daoContact.hSearchContact(id);
 
-		String responseUrl = "/" + "accueil.jsp" + serverUtils.getNewParameter("dbOutputRaw", dbOutput);
+		String responseUrl = "/" + "accueil.jsp" + ServerUtils.getNewParameter("dbOutputRaw", dbOutput);
 		System.out.println("::doPost responseUrl=" + responseUrl);
 
 		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );

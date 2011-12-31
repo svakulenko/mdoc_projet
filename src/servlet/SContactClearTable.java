@@ -11,9 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import springi.IDAOContact;
+import daoInterface.IDAOContact;
 
-import mycommonFonctional.serverUtils;
+
+import mycommonFonctional.ServerUtils;
 
 
 
@@ -42,7 +43,7 @@ public class SContactClearTable extends HttpServlet {
 		
 		//DAOContact daoContact = new DAOContact();
 		String dbOutput = daoContact.hClearTable();
-		String responseUrl = "/" + "accueil.jsp" + serverUtils.getNewParameter("dbOutput", dbOutput);
+		String responseUrl = "/" + "accueil.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
 		System.out.println("output=" + responseUrl);
 		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );
 		rd.forward(request, response);

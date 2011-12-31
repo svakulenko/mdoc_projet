@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:aop="http://www.springframework.org/schema/aop"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
-	
-<!-- MAIN BEANS  START -->	
+
+	<!-- MAIN BEANS  START -->
 	<bean id="homenumber" class="mydomain.PhoneNumber">
 		<property name="id" value="1"/>
 		<property name="phoneKind" value="home"/>
 		<property name="phoneNumber" value="99999"/>
-		  <property name="contact" ref="contact"/>
-		
+		<property name="contact" ref="contact"/>
+
 	</bean>
 
 
@@ -19,10 +20,9 @@
 		<property name="id" value="1"/>
 		<property name="phoneKind" value="mobile"/>
 		<property name="phoneNumber" value="88888"/>
-		<!-- <property name="contact" ref="contact"/>
-		-->
+		<property name="contact" ref="contact"/>		
 	</bean>
-	
+
 	<bean id="address" class="mydomain.Address">
 		<property name="addId" value="1"/>
 		<property name="street" value="rue address"/>
@@ -32,108 +32,107 @@
 		<!-- <property name="contact" ref="contact"/>
 		-->
 	</bean>
-	
+
 	<bean id="contactgroup" class="mydomain.ContactGroup">
 		<property name="groupId" value="1"/>
 		<property name="groupName" value="Default Name"/>
 		<property name="contacts">
 			<set>
 				<ref bean="contact"/>
-			</set>	
+			</set>
 		</property>
 	</bean>
-	
-	
-		<bean id="contact" class="mydomain.Contact">
+
+
+	<bean id="contact" class="mydomain.Contact">
 		<property name="id" value="1"/>
 		<property name="email" value="spring@gmail.com"/>
 		<property name="firstName" value="Spring First"/>
 		<property name="lastName"  value="Spring Last"/>
 		<property name="add" 	   ref="address"/>
-	<property name="phoneNumbers">
-		<set>
+		<property name="phoneNumbers">
+			<set>
 				<ref bean="homenumber"/>
 				<ref bean="mobilenumber"/>
-		</set>
-	</property>
-		
-	<property name="contactgroup">
+			</set>
+		</property>
+		<property name="contactgroup">
 			<set>
 				<ref bean="contactgroup"/>
-			</set>	
+			</set>
 		</property>
 	</bean>
-	
+
 	<!-- DAO CONTACT, CODE INJECTION WITH CONSTRUCTOR -->
-	<bean id="daocontactContr" class="dbHandlers.DAOContact">
+	<bean id="daocontactContructor" class="daoImpl.DAOContact">
 		<constructor-arg ref="contact"/>
 	</bean>
-	
+
 	<!-- DAO CONTACT, CODE INJECTION WITH PARAMETER (DEFAULT) -->
-	<bean id="daocontact" class="dbHandlers.DAOContact">
+	<bean id="daocontactProperty" class="daoImpl.DAOContact">
 		<property name="contact" ref="contact"/>
 		<property name="sessionFactory" ref="mySessionFactory"/>
 	</bean>
-	
+
 	<!-- DAO HIBERNATE MANAGER. INHERITH HIM, IF YOU NEED TO Hibernate fonctionality
-	<bean id="daohibernatemanager" class="dbHandlers.DAOHibernateManager">
-		<property name="sessionFactory" ref="mySessionFactory"/>
-	</bean>
-	 -->
+	<bean
+		id="daohibernatemanager" class="daoImpl.DAOHibernateManager">
+		<property
+		name="sessionFactory" ref="mySessionFactory"/>
+	</bean> -->
 
 
 
-<!-- ASPECTS 
-<bean id="emailerLogger" class="example.EmailLogger"/>
+	<!-- ASPECTS <bean id="emailerLogger" class="example.EmailLogger"/>
 <aop:config>
-<aop:aspect id="emailLoggerBean" ref="emailerLogger">
+<aop:aspect
+		id="emailLoggerBean" ref="emailerLogger">
 <aop:around
-pointcut="execution(* *hAddContact( *, *, *, String)) and args(*, FirstName, *, *)"
-method="logBeforeA" arg-names="pjp, FirstName"/>
+pointcut="execution(*
+		*hAddContact( *, *, *, String)) and args(*, FirstName, *, *)"
+method="logBeforeA"
+		arg-names="pjp, FirstName"/>
 </aop:aspect>
 </aop:config>
 -->
-<!-- MAIN BEANS  END -->	
+	<!-- MAIN BEANS  END -->
 
 
-<!-- HIBERNATE PART START -->
+	<!-- HIBERNATE PART START -->
 
-<!-- DATA SOURCE -->
-<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource"
-destroy-method="close">
-<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-<property name="url" value="jdbc:mysql://localhost/test"/>
-<property name="username" value="root"/>
-<property name="password" value="******"/>
-</bean>
+	<!-- DATA SOURCE -->
+	<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost/test"/>
+		<property name="username" value="root"/>
+		<property name="password" value="******"/>
+	</bean>
 
-<!-- SESSION FACTORY -->
-<bean id="mySessionFactory"
-class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
-<property name="dataSource" ref="myDataSource"/>
-<property name="mappingResources">
-<list>
-<value>phonenumber.hbm.xml</value>
-<value>address.hbm.xml</value>
-<value>contact.hbm.xml</value>
-<value>contactgroup.hbm.xml</value>
-</list>
-</property>
-<property name="hibernateProperties">
-<props>
-<prop
-key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
-</props>
-</property>
-</bean>
+	<!-- SESSION FACTORY -->
+	<bean id="mySessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="myDataSource"/>
+		<property name="mappingResources">
+			<list>
+				<value>phonenumber.hbm.xml</value>
+				<value>address.hbm.xml</value>
+				<value>contact.hbm.xml</value>
+				<value>contactgroup.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+			</props>
+		</property>
+	</bean>
 
 
-<!-- HIBERNATE MANAGER-->
-<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
-<property name="sessionFactory" ref="mySessionFactory"/>
-</bean>
+	<!-- HIBERNATE MANAGER-->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="mySessionFactory"/>
+	</bean>
 
-<!-- HIBERNATE PART END -->
+	<!-- HIBERNATE PART END -->
 
 
 
