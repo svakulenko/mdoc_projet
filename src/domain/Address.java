@@ -3,19 +3,23 @@ package domain;
 //ADRESS INNER CLASS START
 public class Address 
 {
-	long addId;
+	long addressId;
 	String street;
 	String city;
 	String zip;
 	String country;
 	public Address() {}
-	public long getAddId() {
-		return addId;
+	
+	
+	public long getAddressId() {
+		return addressId;
 	}
 
-	public void setAddId(long addId) {
-		this.addId = addId;
+
+	public void setAddressId(long addressId) {
+		this.addressId = addressId;
 	}
+
 
 	public String getStreet() {
 		return street;
@@ -51,7 +55,7 @@ public class Address
 	public String toString()
 	{
 		StringBuffer result = new StringBuffer();
-		result.append("Id: " + this.addId + "\n");
+		result.append("Id: " + this.addressId + "\n");
 		result.append("Street: " + this.street + "\n");
 		result.append("City: " + this.city + "\n");
 		result.append("Zip: " + this.zip + "\n");

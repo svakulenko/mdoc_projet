@@ -10,8 +10,9 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateCallback;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import utility.*;
+import util.*;
 
 import daoInterface.IDAOContact;
 import domain.Contact;
@@ -19,7 +20,7 @@ import domain.Contact;
 
 
 
-public class DAOContact extends DAOHibernateManager implements IDAOContact {
+public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 	
 
 	Contact contact;
@@ -73,7 +74,7 @@ public class DAOContact extends DAOHibernateManager implements IDAOContact {
 		String rvalue = null;
 		
 		Contact c = new Contact();
-		c.setId(1);
+		c.setContactId(1);
 		c.setFirstName(FirstName);
 		c.setLastName(LastName);
 		c.setEmail(Email);

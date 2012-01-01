@@ -1,88 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-		 xmlns="http://java.sun.com/xml/ns/javaee" 
-		 xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
-		 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
-  <display-name>tp3_spring</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
-  
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+	<display-name>tp3_spring</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
 
-<listener>
-<listener-class>
-org.springframework.web.context.ContextLoaderListener
-</listener-class>
-</listener>
-<listener>
-<listener-class>
-org.springframework.web.context.request.RequestContextListener
-</listener-class>
-</listener>
-  
-  <servlet>
-    <description></description>
-    <display-name>Login</display-name>
-    <servlet-name>Login</servlet-name>
-    <servlet-class>servlet.Login</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Login</servlet-name>
-    <url-pattern>/Login</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>SContactClearTable</display-name>
-    <servlet-name>SContactClearTable</servlet-name>
-    <servlet-class>servlet.SContactClearTable</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>SContactClearTable</servlet-name>
-    <url-pattern>/SContactClearTable</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>SContactShowAll</display-name>
-    <servlet-name>SContactShowAll</servlet-name>
-    <servlet-class>servlet.SContactShowAll</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>SContactShowAll</servlet-name>
-    <url-pattern>/SContactShowAll</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>SContactAddContact</display-name>
-    <servlet-name>SContactAddContact</servlet-name>
-    <servlet-class>servlet.SContactAddContact</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>SContactAddContact</servlet-name>
-    <url-pattern>/SContactAddContact</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>SContactRemoveContact</display-name>
-    <servlet-name>SContactRemoveContact</servlet-name>
-    <servlet-class>servlet.SContactRemoveContact</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>SContactRemoveContact</servlet-name>
-    <url-pattern>/SContactRemoveContact</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>SContactSearchContact</display-name>
-    <servlet-name>SContactSearchContact</servlet-name>
-    <servlet-class>servlet.SContactSearchContact</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>SContactSearchContact</servlet-name>
-    <url-pattern>/SContactSearchContact</url-pattern>
-  </servlet-mapping>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>
+			org.springframework.web.context.request.RequestContextListener
+		</listener-class>
+	</listener>
+
+	<servlet>
+		<description></description>
+		<display-name>Login</display-name>
+		<servlet-name>Login</servlet-name>
+		<servlet-class>servlet.Login</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/Login</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>SContactClearTable</display-name>
+		<servlet-name>SContactClearTable</servlet-name>
+		<servlet-class>servlet.SContactClearTable</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SContactClearTable</servlet-name>
+		<url-pattern>/SContactClearTable</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>SContactShowAll</display-name>
+		<servlet-name>SContactShowAll</servlet-name>
+		<servlet-class>servlet.SContactShowAll</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SContactShowAll</servlet-name>
+		<url-pattern>/SContactShowAll</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>SContactAddContact</display-name>
+		<servlet-name>SContactAddContact</servlet-name>
+		<servlet-class>servlet.SContactAddContact</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SContactAddContact</servlet-name>
+		<url-pattern>/SContactAddContact</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>SContactRemoveContact</display-name>
+		<servlet-name>SContactRemoveContact</servlet-name>
+		<servlet-class>servlet.SContactRemoveContact</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SContactRemoveContact</servlet-name>
+		<url-pattern>/SContactRemoveContact</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>SContactSearchContact</display-name>
+		<servlet-name>SContactSearchContact</servlet-name>
+		<servlet-class>servlet.SContactSearchContact</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SContactSearchContact</servlet-name>
+		<url-pattern>/SContactSearchContact</url-pattern>
+	</servlet-mapping>
 </web-app>

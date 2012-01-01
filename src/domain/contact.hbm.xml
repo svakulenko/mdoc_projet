@@ -4,43 +4,42 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"
 	>
 	
-<hibernate-mapping package="mydomain">
-  <class name="Contact" table="contact_table">
-  	 <id name="id" type="long" column="ID_CONTACT" >
-   		<generator class="increment"/>
-  	 </id>
+<hibernate-mapping package="domain">
+	<class name="Contact" table="Contact">
+		<id name="contactId" type="long" column="ID_CONTACT" >
+			<generator class="increment"/>
+		</id>
 
-  <property name="firstName">  <column name="FIRSTNAME" />  </property>
-  <property name="lastName">   <column name="LASTNAME" />   </property>
-  <property name="email">      <column name="EMAIL" />      </property>	
+		<property name="firstName">
+			<column name="FIRST_NAME" />
+		</property>
+		
+		<property name="lastName">
+			<column name="LAST_NAME" />
+		</property>
+		
+		<property name="email">
+			<column name="EMAIL" />
+		</property>
 
+		<set name="phoneNumbers" inverse="true">
+			<key column="ID_CONT"  />
+			<one-to-many class="PhoneNumber"/>
+		</set>
 
-    
+		<set name="contactgroup" table="Participation" cascade="save-update">
+			<key column="ID_CONTACT" />
+			<many-to-many class="ContactGroup" column="ID_CONTACT_GROUP"  />
+		</set>
 
+		<!-- address, one to one connection -->
+		<many-to-one name="address" column="ID_ADDRESS" unique="true"/>
 
-
-    
-  <set name="phoneNumbers" inverse="true">
-      <key column="ID_CONTACT"  />
-      <one-to-many class="PhoneNumber"/>
-</set>
-
-
-  <set name="contactgroup" table="PARTICIPATION" cascade="save-update">
-      <key column="ID_CONTACT" />
-      <many-to-many class="ContactGroup" column="ID_CONTACTGROUP"  />
-  </set>
-
-
-
-<!-- address, one to one connection -->
-<many-to-one name="add" column="ID_ADD" unique="true"/>
-
-<joined-subclass name="Entreprise" table="ENTREPRISE_TABLE">
-<key column="ID_CONTACT_SUPER"  />
-<property name="numSiret"> <column name="NUMSTIRET" /> </property>
-</joined-subclass>
-
-
-  </class>
+		<joined-subclass name="Entreprise" table="Entreprise">
+			<key column="ID_ENTREPRISE"  />
+			<property name="numSiret">
+				<column name="NUM_SIRET" />
+			</property>
+		</joined-subclass>
+	</class>
 </hibernate-mapping>

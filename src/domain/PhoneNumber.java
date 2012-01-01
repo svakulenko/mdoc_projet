@@ -4,7 +4,7 @@ public class PhoneNumber {
 
 	public PhoneNumber() {}
 	
-	long id;
+	long phoneId;
 	String phoneKind;
 	String phoneNumber;
 	Contact contact;
@@ -16,11 +16,12 @@ public class PhoneNumber {
 	public void setContact(Contact contact) {
 		this.contact = contact;
 	}
-	public long getId() {
-		return id;
+	
+	public long getPhoneId() {
+		return phoneId;
 	}
-	public void setId(long id) {
-		this.id = id;
+	public void setPhoneId(long phoneId) {
+		this.phoneId = phoneId;
 	}
 	public String getPhoneKind() {
 		return phoneKind;

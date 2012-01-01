@@ -4,8 +4,8 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"
 	>
 	
-<hibernate-mapping package="mydomain">
-  <class name="ContactGroup" table="contactgroup_table">
+<hibernate-mapping package="domain">
+  <class name="ContactGroup" table="ContactGroup">
   	 <id name="groupId" type="long" column="ID_CONTACTGROUP" >
    		<generator class="increment"/>
   	 </id>
@@ -13,8 +13,8 @@
   <property name="groupName">  <column name="GROUPNAME" />  </property>
 
 
-  <set name="contacts" table="PARTICIPATION">
-      <key column="ID_CONTACTGROUP" />
+  <set name="contacts" table="Participation">
+      <key column="ID_CONTACT_GROUP" />
       <many-to-many class="Contact" column="ID_CONTACT"  />
   </set>
 

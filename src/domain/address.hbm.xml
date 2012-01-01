@@ -4,14 +4,24 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"
 	>
 	
-<hibernate-mapping package="mydomain">
-  <class name="Address" table="address_table">
-  	 <id name="addId" column="ID_ADD" >	<generator class="increment"/> 	 </id>
-  <property name="street">  <column name="STREET" />  </property>
-  <property name="city">  <column name="CITY" />  </property>
-  <property name="zip">  <column name="ZIP" />  </property>
-  <property name="country">  <column name="COUNTRY" />  </property>
-  
-   
-  </class>
+<hibernate-mapping>
+    <class name="domain.Address" table="Address">
+        <id name="addressId" type="long">
+            <column name="ID_ADDRESS" />
+            <generator class="increment" />
+        </id>
+        
+        <property name="street" type="java.lang.String">
+            <column name="STREET" />
+        </property>
+        <property name="city" type="java.lang.String">
+            <column name="CITY" />
+        </property>
+        <property name="zip" type="java.lang.String">
+            <column name="ZIP" />
+        </property>
+        <property name="country" type="java.lang.String">
+            <column name="COUNTRY" />
+        </property>                      		     
+	</class>
 </hibernate-mapping>

@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.*;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import utility.ServerUtils;
+import util.ServerUtils;
 
 import daoInterface.*;
 import domain.PhoneNumber;
@@ -57,12 +57,12 @@ public class SContactAddContact extends HttpServlet {
 		
 		ApplicationContext  appCtx =	WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		
-		IDAOContact daoContact = (IDAOContact) appCtx.getBean("daoContactConstructor");
+		IDAOContact daoContact = (IDAOContact) appCtx.getBean("daocontactProperty");
         Iterator<PhoneNumber> iterator = daoContact.getContact().getPhoneNumbers().iterator();
         
         // Testing it values
         // Address;
-        System.out.println(daoContact.getContact().getAdd().toString());
+        System.out.println(daoContact.getContact().getAddress().toString());
         PhoneNumber phoneNumber = null;
         while(iterator.hasNext())
         {
@@ -85,13 +85,13 @@ public class SContactAddContact extends HttpServlet {
 //		
 //
 //        
-//		String dbOutput = dao.hAddContact(0, FirstName, LastName, Email);
-//		
-//		String responseUrl = "/addContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
-//		System.out.println("::doPost responseUrl=" + responseUrl);
-//
-//		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );
-//		rd.forward(request, response);
+		String dbOutput = daoContact.hAddContact(0, firstName, lastName, email);
+		
+		String responseUrl = "/addContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
+		System.out.println("::doPost responseUrl=" + responseUrl);
+
+		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );
+		rd.forward(request, response);
 	}
 
 }

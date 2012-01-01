@@ -7,31 +7,39 @@ import java.util.Set;
 
 public class Contact {
 	
-	private long id;
+	private long contactId;
 	private String email;
 	private String firstName;
 	private String lastName;
 	
 	private Set<PhoneNumber> phoneNumbers = new HashSet<PhoneNumber>(); 
 	private Set<ContactGroup> contactgroup = new HashSet<ContactGroup>();;
-	private Address add;
+	private Address address;
 	
 	public Contact()
 	{
-    	id = -1;
+		contactId = -1;
     }
-	public Address getAdd() {
-		return add;
-		
+	
+
+	
+	public Address getAddress() {
+		return address;
 	}
-	public void setAdd(Address add) {
-		this.add = add;
+
+
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
-	public long getId() {
-		return id;
+
+
+
+	public long getContactId() {
+		return contactId;
 	}
-	public void setId(long id) {
-		this.id = id;
+	public void setContactId(long contactId) {
+		this.contactId = contactId;
 	}
 	public String getEmail() {
 		return email;

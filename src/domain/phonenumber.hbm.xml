@@ -2,17 +2,24 @@
 <!DOCTYPE hibernate-mapping PUBLIC
 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"
-	>
-	
-<hibernate-mapping package="mydomain">
-  <class name="PhoneNumber" table="phonenumber_table">
-  	 <id name="id" type="long" column="ID_PHONENUMBER" >
-   		<generator class="increment"/>
-  	 </id>
-  <property name="phoneNumber">  <column name="PHONENUMBER" />  </property>
-  <property name="phoneKind">   <column name="PHONEKIND" />     </property>
-  
-  <many-to-one name="contact" column="ID_CONTACT" class="Contact"/>
-  
-  </class>
+	>	
+
+<hibernate-mapping>
+    <class name="domain.PhoneNumber" table="PhoneNumber">
+        <id name="phoneId" type="long" access="field">
+            <column name="ID_PHONE_NUMBER" />
+            <generator class="increment" />
+        </id>
+        
+        <property name="phoneKind" type="java.lang.String">
+            <column name="PHONE_KIND" />
+        </property>
+        <property name="phoneNumber" type="java.lang.String">
+            <column name="PHONE_NUMBER" />
+        </property>
+        
+        <many-to-one 	name="contact" 
+        				class="domain.Contact" 
+        				column="ID_CONT" /> 
+    </class>
 </hibernate-mapping>
