@@ -140,15 +140,15 @@ method="logBeforeA"
 		<property name="dataSource" ref="myDataSource"/>
 		<property name="mappingResources">
 			<list>
-				<value>phonenumber.hbm.xml</value>
-				<value>address.hbm.xml</value>
-				<value>contact.hbm.xml</value>
-				<value>contactgroup.hbm.xml</value>
+				<value>mydomain/phonenumber.hbm.xml</value>
+				<value>mydomain/address.hbm.xml</value>
+				<value>mydomain/contact.hbm.xml</value>
+				<value>mydomain/contactgroup.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 			</props>
 		</property>
 	</bean>

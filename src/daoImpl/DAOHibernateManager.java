@@ -3,9 +3,12 @@ package daoImpl;
 import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
-public class DAOHibernateManager {
-	private HibernateTemplate hibernateTemplate;
+import daoInterface.IDAOHibernateManager;
+
+public class DAOHibernateManager implements IDAOHibernateManager
+{
 	
+	private HibernateTemplate hibernateTemplate;
 	public HibernateTemplate getHibernateTemplate(){
 		return hibernateTemplate;
 	}
