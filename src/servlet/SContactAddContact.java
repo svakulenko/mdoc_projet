@@ -12,14 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
-import mydomain.PhoneNumber;
 
 import org.springframework.context.*;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import utilities.ServerUtils;
+import utility.ServerUtils;
 
 import daoInterface.*;
+import domain.PhoneNumber;
 
 
 /**

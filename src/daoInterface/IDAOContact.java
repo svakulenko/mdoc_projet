@@ -1,6 +1,6 @@
 package daoInterface;
 
-import mydomain.Contact;
+import domain.Contact;
 
 public interface IDAOContact {
 	public void setContact(Contact contact);

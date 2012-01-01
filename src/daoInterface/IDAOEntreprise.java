@@ -2,7 +2,8 @@ package daoInterface;
 
 import java.util.Set;
 
-import mydomain.Entreprise;
+import domain.Entreprise;
+
 
 public interface IDAOEntreprise 
 {

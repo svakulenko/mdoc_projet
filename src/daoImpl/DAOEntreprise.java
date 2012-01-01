@@ -2,8 +2,8 @@ package daoImpl;
 
 import java.util.Set;
 
-import mydomain.Entreprise;
 import daoInterface.IDAOEntreprise;
+import domain.Entreprise;
 
 public class DAOEntreprise implements IDAOEntreprise 
 {

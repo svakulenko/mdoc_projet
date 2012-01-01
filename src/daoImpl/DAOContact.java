@@ -5,16 +5,16 @@ import java.sql.SQLException;
 import java.util.List;
 
 
-import mydomain.Contact;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateCallback;
 
-import utilities.*;
+import utility.*;
 
 import daoInterface.IDAOContact;
+import domain.Contact;
 
 
 

@@ -140,10 +140,10 @@ method="logBeforeA"
 		<property name="dataSource" ref="myDataSource"/>
 		<property name="mappingResources">
 			<list>
-				<value>mydomain/phonenumber.hbm.xml</value>
-				<value>mydomain/address.hbm.xml</value>
-				<value>mydomain/contact.hbm.xml</value>
-				<value>mydomain/contactgroup.hbm.xml</value>
+				<value>domain/phonenumber.hbm.xml</value>
+				<value>domain/address.hbm.xml</value>
+				<value>domain/contact.hbm.xml</value>
+				<value>domain/contactgroup.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
