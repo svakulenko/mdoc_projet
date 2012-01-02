@@ -66,7 +66,7 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 	public String addContact (Contact contact)
 	{
 		String rvalue = null;
-		getHibernateTemplate().save(contact);
+		getHibernateTemplate().saveOrUpdate(contact);
 		rvalue = ServerUtils.opFait;
 		return rvalue;
 	}

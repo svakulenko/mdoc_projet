@@ -89,18 +89,22 @@
 	<bean id="daoContactConstructor" class="daoImpl.DAOContact">
 		<constructor-arg ref="contact"/>
 	</bean>
-	-->
+	
 	<bean id="daoEntrepriseConstructor" class="daoImpl.DAOEntreprise">
 		<constructor-arg ref="entreprise"/>
 	</bean>
-
+	-->
 
 	<!-- DAO CONTACT, CODE INJECTION WITH PARAMETER (DEFAULT) -->
-	<bean id="daocontactProperty" class="daoImpl.DAOContact">
+	<bean id="daoContactProperty" class="daoImpl.DAOContact">
 		<property name="contact" ref="contact"/>
 		<property name="sessionFactory" ref="sessionFactory"/> <!-- Spring Hibernate declaration-->
 	</bean>
 	
+	<bean id="daoEntrepriseProperty" class="daoImpl.DAOEntreprise">
+		<property name="entreprise" ref="entreprise"/>
+		<property name="sessionFactory" ref="sessionFactory"/> <!-- Spring Hibernate declaration-->
+	</bean>
 	<!-- DAO HIBERNATE MANAGER. INHERITH HIM, IF YOU NEED TO Hibernate fonctionality
 	<bean
 		id="daohibernatemanager"

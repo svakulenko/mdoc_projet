@@ -37,8 +37,8 @@
 <div style='display:block'>
 <form name="myForm" method="post" action="AddContact">
     <br/>  <input type="submit" value="Save"> <input type="reset"  value="Clear">
-	<input type="radio" name="type" value="contact" CHECKED onclick="toggle('contact')" /> Contact
-	<input type="radio" name="type" value="entreprise" onclick="toggle('entreprise')"/> Entreprise
+	<input type="radio" name="typeBtn" value="contact" CHECKED onclick="toggle('contact')" /> Contact
+	<input type="radio" name="typeBtn" value="entreprise" onclick="toggle('entreprise')"/> Entreprise
 
     <table><tbody>   		           
 

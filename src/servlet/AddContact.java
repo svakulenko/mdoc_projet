@@ -25,9 +25,11 @@ import domain.PhoneNumber;
 /**
  * Servlet implementation class SContactAddContact
  */
-public class AddContact extends HttpServlet {
+public class AddContact extends HttpServlet 
+{
 	private static final long serialVersionUID = 1L;
-       
+	public static final String ENTREPRISE = "entreprise";
+	public static final String CONTACT = "contact";
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -58,38 +60,24 @@ public class AddContact extends HttpServlet {
 		String phoneNumber = request.getParameter("phoneNumber");
 		String numSiret = request.getParameter("numsiret");
 		
+		String contactType = request.getParameter("typeBtn");
 		ApplicationContext  appCtx =	
 				WebApplicationContextUtils.getWebApplicationContext(getServletContext());		
-		IDAOContact daoContact = (IDAOContact) appCtx.getBean("daocontactProperty");
-//        Iterator<PhoneNumber> iterator = daoContact.getContact().getPhoneNumbers().iterator();
-        
-        // Testing it values
-        // Address;
-//        System.out.println(daoContact.getContact().getAddress().toString());
-//        PhoneNumber phoneNumber = null;
-//        while(iterator.hasNext())
-//        {
-//        	phoneNumber = iterator.next();
-//        	System.out.println("Kind: " + phoneNumber.getPhoneKind() + " Number: " + phoneNumber.getPhoneNumber());
-//        }
-        
-//        IDAOEntreprise daoEntreprise = (IDAOEntreprise) appCtx.getBean("daocontactProperty");
-//        System.out.println(daoEntreprise.toString());
-        
-        
-//		dao = (IDAOContact) appCtx.getBean("daocontact");
-//		System.out.println("dao.contact=" + dao.getContact());
-//		iterator = dao.getContact().getPhoneNumbers().iterator();
-//        
-//		while(iterator.hasNext())
-//        {
-//          System.out.println(iterator.next().getPhoneKind());
-//        }
-//		
-//
-
+		String dbOutput = "";
+		IDAOContact daoContact = null;
+		IDAOEntreprise daoEntreprise = null;
+		if (contactType.equals(ENTREPRISE))
+		{
+			// For testing purposes
+			daoEntreprise = (IDAOEntreprise) appCtx.getBean("daoEntrepriseProperty");
+			dbOutput = daoEntreprise.addEntreprise(daoEntreprise.getEntreprise(),getServletContext());  //<-- Testing purpose
+		}
+		else 
+		{		
+			daoContact = (IDAOContact) appCtx.getBean("daoContactProperty");
+			dbOutput = daoContact.addContact(daoContact.getContact());
+		}
 		
-		String dbOutput = daoContact.addContact(daoContact.getContact());
 		
 //		If you want to use data from form submission, uncomment these following lines:
 //		String dbOutput = daoContact.addContact(firstName, 
