@@ -46,7 +46,7 @@ public class SearchContact extends HttpServlet {
 		Integer id = Integer.parseInt(request.getParameter("contactID"));
 
 		ApplicationContext  ac =	WebApplicationContextUtils.getWebApplicationContext(getServletContext());
-		IDAOContact daoContact = (IDAOContact) ac.getBean("daocontact");
+		IDAOContact daoContact = (IDAOContact) ac.getBean("daoContactProperty");
 		//DAOContact daoContact = new DAOContact();
 
 		String dbOutput = daoContact.searchContact(id);

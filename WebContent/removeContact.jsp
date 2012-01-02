@@ -12,7 +12,7 @@
 <jsp:include page="/commonPages/header.jsp" />
 
 <h1>remove contact</h1>
-<form name="inputForm1" method="post" action="SContactRemoveContact" onsubmit="JavaScript:return checkInputFull();">
+<form name="inputForm1" method="post" action="RemoveContact" onsubmit="JavaScript:return checkInputFull();">
 
 	<table><tbody>
 		

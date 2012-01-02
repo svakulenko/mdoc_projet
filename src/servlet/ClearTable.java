@@ -40,7 +40,7 @@ public class ClearTable extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("SContactClearTable::doGet");
 		ApplicationContext  ac =	WebApplicationContextUtils.getWebApplicationContext(getServletContext());
-		IDAOContact daoContact = (IDAOContact) ac.getBean("daocontact");
+		IDAOContact daoContact = (IDAOContact) ac.getBean("daoContactProperty");
 		
 		//DAOContact daoContact = new DAOContact();
 		String dbOutput = daoContact.clearTable();

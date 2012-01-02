@@ -14,7 +14,7 @@
 
 
 <h1>search contact</h1>
-	<form name="inputForm1" method="post" action="SContactSearchContact" onsubmit="JavaScript:return checkInputFull();">
+	<form name="inputForm1" method="post" action="SearchContact" onsubmit="JavaScript:return checkInputFull();">
 	<table><tbody>
 		
 		<tr>
