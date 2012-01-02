@@ -7,9 +7,13 @@
 	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
 
+	<!-- 
+		Because we're currently using "increment" attribute in hbm file, we dont need to 
+	    explicitly initialize id value of all class :)
+	-->
+	
 	<!-- MAIN BEANS  START -->
 	<bean id="homenumber" class="domain.PhoneNumber">
-		<property name="phoneId" value="1"/>
 		<property name="phoneKind" value="home"/>
 		<property name="phoneNumber" value="99999"/>
 		<property name="contact" ref="contact"/>
@@ -18,14 +22,12 @@
 
 
 	<bean id="mobilenumber" class="domain.PhoneNumber">
-		<property name="phoneId" value="1"/>
 		<property name="phoneKind" value="mobile"/>
 		<property name="phoneNumber" value="88888"/>
 		<property name="contact" ref="contact"/>
 	</bean>
 
 	<bean id="address" class="domain.Address">
-		<property name="addressId" value="1"/>
 		<property name="street" value="rue address"/>
 		<property name="city" value="city address"/>
 		<property name="zip" value="75000"/>
@@ -35,7 +37,6 @@
 	</bean>
 
 	<bean id="contactgroup" class="domain.ContactGroup">
-		<property name="groupId" value="1"/>
 		<property name="groupName" value="Default Name"/>
 		<property name="contacts">
 			<set>
@@ -46,7 +47,6 @@
 
 
 	<bean id="contact" class="domain.Contact">
-		<property name="contactId" value="1"/>
 		<property name="email" value="spring@gmail.com"/>
 		<property name="firstName" value="Contact First"/>
 		<property name="lastName"  value="Contact Last"/>
@@ -65,7 +65,6 @@
 	</bean>
 
 	<bean id="entreprise" class="domain.Entreprise">
-		<property name="contactId" value="1"/>
 		<property name="numSiret" value="1111111" />
 		<property name="email" value="spring@gmail.com"/>
 		<property name="firstName" value="Entreprise First"/>
@@ -99,7 +98,7 @@
 	<!-- DAO CONTACT, CODE INJECTION WITH PARAMETER (DEFAULT) -->
 	<bean id="daocontactProperty" class="daoImpl.DAOContact">
 		<property name="contact" ref="contact"/>
-		<property name="sessionFactory" ref="sessionFactory"/>
+		<property name="sessionFactory" ref="sessionFactory"/> <!-- Spring Hibernate declaration-->
 	</bean>
 	
 	<!-- DAO HIBERNATE MANAGER. INHERITH HIM, IF YOU NEED TO Hibernate fonctionality
@@ -160,11 +159,7 @@ method="logBeforeA"
 		<property name="username" value="root"/>
 		<property name="password" value="******"/>
 	</bean>
-	<!-- HIBERNATE MANAGER-->
-	<bean id="daoContact" class="daoImpl.DAOContact">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-	<!-- HIBERNATE PART END -->
+	
 
 
 	<!--

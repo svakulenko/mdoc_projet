@@ -46,32 +46,35 @@ public class AddContact extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		System.out.println("SContact::doPost 1");
+		System.out.println("Adding contact info into database....");
 		String firstName = request.getParameter("firstname");
 		String lastName = request.getParameter("lastname");
 		String email    = request.getParameter("email");
 		String street = request.getParameter("street");	
-
-		System.out.println("street=" + street);
-		//DAOContact daoContact = new DAOContact();
+		String city = request.getParameter("city");
+		String zip = request.getParameter("zip");
+		String country = request.getParameter("country");
+		String phoneKind = request.getParameter("phonekind");
+		String phoneNumber = request.getParameter("phoneNumber");
+		String numSiret = request.getParameter("numsiret");
 		
-		ApplicationContext  appCtx =	WebApplicationContextUtils.getWebApplicationContext(getServletContext());
-		
+		ApplicationContext  appCtx =	
+				WebApplicationContextUtils.getWebApplicationContext(getServletContext());		
 		IDAOContact daoContact = (IDAOContact) appCtx.getBean("daocontactProperty");
-        Iterator<PhoneNumber> iterator = daoContact.getContact().getPhoneNumbers().iterator();
+//        Iterator<PhoneNumber> iterator = daoContact.getContact().getPhoneNumbers().iterator();
         
         // Testing it values
         // Address;
-        System.out.println(daoContact.getContact().getAddress().toString());
-        PhoneNumber phoneNumber = null;
-        while(iterator.hasNext())
-        {
-        	phoneNumber = iterator.next();
-        	System.out.println("Kind: " + phoneNumber.getPhoneKind() + " Number: " + phoneNumber.getPhoneNumber());
-        }
+//        System.out.println(daoContact.getContact().getAddress().toString());
+//        PhoneNumber phoneNumber = null;
+//        while(iterator.hasNext())
+//        {
+//        	phoneNumber = iterator.next();
+//        	System.out.println("Kind: " + phoneNumber.getPhoneKind() + " Number: " + phoneNumber.getPhoneNumber());
+//        }
         
-        IDAOEntreprise daoEntreprise = (IDAOEntreprise) appCtx.getBean("daoEntrepriseConstructor");
-        System.out.println(daoEntreprise.toString());
+//        IDAOEntreprise daoEntreprise = (IDAOEntreprise) appCtx.getBean("daocontactProperty");
+//        System.out.println(daoEntreprise.toString());
         
         
 //		dao = (IDAOContact) appCtx.getBean("daocontact");
@@ -84,8 +87,20 @@ public class AddContact extends HttpServlet {
 //        }
 //		
 //
-//        
-		String dbOutput = daoContact.addContact(0, firstName, lastName, email);
+
+		
+		String dbOutput = daoContact.addContact(daoContact.getContact());
+		
+//		If you want to use data from form submission, uncomment these following lines:
+//		String dbOutput = daoContact.addContact(firstName, 
+//												lastName, 
+//												email, 
+//												street, 
+//												city, 
+//												zip, 
+//												country, 
+//												phoneKind, 
+//												phoneNumber);
 		
 		String responseUrl = "/addContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
 		System.out.println("::doPost responseUrl=" + responseUrl);
@@ -95,12 +110,3 @@ public class AddContact extends HttpServlet {
 	}
 
 }
-
-
-/*
-String city = request.getParameter("city");
-String zip    = request.getParameter("zip");
-String country = request.getParameter("country");
-String phonekind = request.getParameter("phonekind");
-String phonenumber    = request.getParameter("phonenumber");
-*/	

@@ -34,52 +34,52 @@
 	</servlet-mapping>
 	<servlet>
 		<description></description>
-		<display-name>SContactClearTable</display-name>
-		<servlet-name>SContactClearTable</servlet-name>
-		<servlet-class>servlet.SContactClearTable</servlet-class>
+		<display-name>ClearTable</display-name>
+		<servlet-name>ClearTable</servlet-name>
+		<servlet-class>servlet.ClearTable</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>SContactClearTable</servlet-name>
-		<url-pattern>/SContactClearTable</url-pattern>
+		<servlet-name>ClearTable</servlet-name>
+		<url-pattern>/ClearTable</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<description></description>
-		<display-name>SContactShowAll</display-name>
-		<servlet-name>SContactShowAll</servlet-name>
-		<servlet-class>servlet.SContactShowAll</servlet-class>
+		<display-name>ShowAllContact</display-name>
+		<servlet-name>ShowAllContact</servlet-name>
+		<servlet-class>servlet.ShowAllContact</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>SContactShowAll</servlet-name>
-		<url-pattern>/SContactShowAll</url-pattern>
+		<servlet-name>ShowAllContact</servlet-name>
+		<url-pattern>/ShowAllContact</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<description></description>
-		<display-name>SContactAddContact</display-name>
-		<servlet-name>SContactAddContact</servlet-name>
-		<servlet-class>servlet.SContactAddContact</servlet-class>
+		<display-name>AddContact</display-name>
+		<servlet-name>AddContact</servlet-name>
+		<servlet-class>servlet.AddContact</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>SContactAddContact</servlet-name>
-		<url-pattern>/SContactAddContact</url-pattern>
+		<servlet-name>AddContact</servlet-name>
+		<url-pattern>/AddContact</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<description></description>
-		<display-name>SContactRemoveContact</display-name>
-		<servlet-name>SContactRemoveContact</servlet-name>
-		<servlet-class>servlet.SContactRemoveContact</servlet-class>
+		<display-name>RemoveContact</display-name>
+		<servlet-name>RemoveContact</servlet-name>
+		<servlet-class>servlet.RemoveContact</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>SContactRemoveContact</servlet-name>
-		<url-pattern>/SContactRemoveContact</url-pattern>
+		<servlet-name>RemoveContact</servlet-name>
+		<url-pattern>/RemoveContact</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<description></description>
-		<display-name>SContactSearchContact</display-name>
-		<servlet-name>SContactSearchContact</servlet-name>
-		<servlet-class>servlet.SContactSearchContact</servlet-class>
+		<display-name>SearchContact</display-name>
+		<servlet-name>SearchContact</servlet-name>
+		<servlet-class>servlet.SearchContact</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>SContactSearchContact</servlet-name>
-		<url-pattern>/SContactSearchContact</url-pattern>
+		<servlet-name>SearchContact</servlet-name>
+		<url-pattern>/SearchContact</url-pattern>
 	</servlet-mapping>
 </web-app>

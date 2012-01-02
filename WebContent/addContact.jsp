@@ -59,16 +59,16 @@
 
             <tr>
                 <td style="width: 140px;">*Street:</td>
-                <td valign="top"> <input type="text"  name="email" size="25" value="email value " > </td>
+                <td valign="top"> <input type="text"  name="street" size="25" value="email value " > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*City:</td>
-                <td valign="top"> <input type="text"  name="street" size="25" value="City value " > </td>
+                <td valign="top"> <input type="text"  name="city" size="25" value="City value " > </td>
             </tr>
 
             <tr>
-                <td style="width: 140px;">*zip:</td>
+                <td style="width: 140px;">*Zip:</td>
                 <td valign="top"> <input type="text"  name="zip" size="25" value="email value " > </td>
             </tr>
 
