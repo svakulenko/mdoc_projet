@@ -22,8 +22,8 @@
 			<column name="EMAIL" />
 		</property>
 
-		<set name="phoneNumbers" inverse="true">
-			<key column="ID_CONT"  />
+		<set name="phoneNumbers" inverse="true" cascade="all">
+			<key column="ID_CONTACT"  />
 			<one-to-many class="PhoneNumber"/>
 		</set>
 
@@ -33,7 +33,11 @@
 		</set>
 
 		<!-- address, one to one connection -->
-		<many-to-one name="address" column="ID_ADDRESS" unique="true"/>
+		<many-to-one name="address" 
+					 class="Address"
+					 column="ID_ADDRESS" 
+					 unique="true" 
+					 cascade="all"/>
 
 		<joined-subclass name="Entreprise" table="Entreprise">
 			<key column="ID_ENTREPRISE"  />

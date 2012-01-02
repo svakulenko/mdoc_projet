@@ -20,6 +20,6 @@
         
         <many-to-one 	name="contact" 
         				class="domain.Contact" 
-        				column="ID_CONT" /> 
+        				column="ID_CONTACT" /> 
     </class>
 </hibernate-mapping>
