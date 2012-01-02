@@ -25,13 +25,13 @@ import domain.PhoneNumber;
 /**
  * Servlet implementation class SContactAddContact
  */
-public class SContactAddContact extends HttpServlet {
+public class AddContact extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SContactAddContact() {
+    public AddContact() {
         super();
     }
 
@@ -85,7 +85,7 @@ public class SContactAddContact extends HttpServlet {
 //		
 //
 //        
-		String dbOutput = daoContact.hAddContact(0, firstName, lastName, email);
+		String dbOutput = daoContact.addContact(0, firstName, lastName, email);
 		
 		String responseUrl = "/addContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
 		System.out.println("::doPost responseUrl=" + responseUrl);

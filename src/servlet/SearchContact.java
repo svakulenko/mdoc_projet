@@ -18,17 +18,16 @@ import daoInterface.IDAOContact;
 
 
 /**
- * Servlet implementation class SContactRemoveContact
+ * Servlet implementation class SContactSearchContact
  */
-public class SContactRemoveContact extends HttpServlet {
+public class SearchContact extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SContactRemoveContact() {
+    public SearchContact() {
         super();
-
     }
 
 	/**
@@ -50,8 +49,9 @@ public class SContactRemoveContact extends HttpServlet {
 		IDAOContact daoContact = (IDAOContact) ac.getBean("daocontact");
 		//DAOContact daoContact = new DAOContact();
 
-		String dbOutput = daoContact.deleteContact(id);
-		String responseUrl = "/removeContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
+		String dbOutput = daoContact.searchContact(id);
+
+		String responseUrl = "/" + "accueil.jsp" + ServerUtils.getNewParameter("dbOutputRaw", dbOutput);
 		System.out.println("::doPost responseUrl=" + responseUrl);
 
 		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );

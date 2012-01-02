@@ -23,13 +23,13 @@ import daoInterface.IDAOContact;
 /**
  * Servlet implementation class SContactClearTable
  */
-public class SContactClearTable extends HttpServlet {
+public class ClearTable extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SContactClearTable() {
+    public ClearTable() {
         super();
 
     }
@@ -43,7 +43,7 @@ public class SContactClearTable extends HttpServlet {
 		IDAOContact daoContact = (IDAOContact) ac.getBean("daocontact");
 		
 		//DAOContact daoContact = new DAOContact();
-		String dbOutput = daoContact.hClearTable();
+		String dbOutput = daoContact.clearTable();
 		String responseUrl = "/" + "accueil.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
 		System.out.println("output=" + responseUrl);
 		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );

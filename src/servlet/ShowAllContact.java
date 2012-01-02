@@ -21,13 +21,13 @@ import daoInterface.IDAOContact;
 /**
  * Servlet implementation class SContactShowAll
  */
-public class SContactShowAll extends HttpServlet {
+public class ShowAllContact extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SContactShowAll() {
+    public ShowAllContact() {
         super();
     }
 

@@ -1,6 +1,6 @@
 package testDriver;
 
-import servlet.SContactAddContact;
+import servlet.AddContact;
 import daoImpl.DAOContact;
 
 public class AddingIntoDbUsingSpring {
