@@ -5,7 +5,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import domain.Address;
-import domain.Contact;
 import domain.ContactGroup;
 import domain.Entreprise;
 import domain.PhoneNumber;
