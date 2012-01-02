@@ -27,7 +27,9 @@
 			<one-to-many class="PhoneNumber"/>
 		</set>
 
-		<set name="contactgroup" table="Participation" cascade="save-update">
+		
+		<set name="contactgroup" table="Participation" inverse="true" cascade="save-update">
+			<!-- Here, if inverse = false, it will cause an error because db is updated twice -->
 			<key column="ID_CONTACT" />
 			<many-to-many class="ContactGroup" column="ID_CONTACT_GROUP"  />
 		</set>

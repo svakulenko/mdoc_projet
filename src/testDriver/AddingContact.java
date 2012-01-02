@@ -6,6 +6,7 @@ import org.hibernate.cfg.Configuration;
 
 import domain.Address;
 import domain.Contact;
+import domain.ContactGroup;
 import domain.PhoneNumber;
 
 public class AddingContact {
@@ -19,6 +20,7 @@ public class AddingContact {
 		Contact contact = null;
 		Address address = null;
 		PhoneNumber phone = null;
+		ContactGroup contactGroup = null;
 		
 		String firstName = "firstName";
 		String lastName = "lastName";
@@ -56,14 +58,50 @@ public class AddingContact {
 			contact.getPhoneNumbers().add(phone);
 			phone.setContact(contact);
 			
+			contactGroup = new ContactGroup("contactGroup1");
+			contact.getContactgroup().add(contactGroup);
+			contactGroup.getContacts().add(contact);
+			contactGroup = new ContactGroup("contactGroup2");
+			contact.getContactgroup().add(contactGroup);
+			contactGroup.getContacts().add(contact);
 			//save the contact into the DB
 			//session.save(a);
-			session.save(contact); // or session.persist(contact);
+			session.saveOrUpdate(contact); // or session.persist(contact);
 			
 			//if you modify one of its properties, no need to save it again
 			//contact.setFirstName("Robin");
 			//mandatory to flush the data into the DB
 			tx.commit();
+			
+			
+			session = sessionFactory.openSession();
+			tx = session.beginTransaction();
+			contactGroup = (ContactGroup) session.load(ContactGroup.class, new Long(2));
+			contact = new Contact();
+			contact.setFirstName("Testing 2nd times");
+			contact.setLastName(lastName);
+			contact.setAddress(address);
+			contact.setEmail(email);
+			
+			address = new Address();
+			address.setStreet(street);
+			address.setCity(city);
+			address.setZip(zip);
+			address.setCountry(country);
+			contact.setAddress(address); // Uni birectionnel
+			
+			phone = new PhoneNumber("HomePhone", "myHomeNumber");
+			contact.getPhoneNumbers().add(phone);
+			phone.setContact(contact);
+			phone = new PhoneNumber("CellPhone", "myCellNumber");
+			contact.getPhoneNumbers().add(phone);
+			phone.setContact(contact);
+			contact.getContactgroup().add(contactGroup);
+			contactGroup.getContacts().add(contact);
+			
+			session.saveOrUpdate(contact);
+			tx.commit();
+			
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}
