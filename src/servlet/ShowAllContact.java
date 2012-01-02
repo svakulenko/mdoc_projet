@@ -38,7 +38,7 @@ public class ShowAllContact extends HttpServlet {
 		System.out.println("SContactShowAll::doGet");
 		
 		ApplicationContext  ac =	WebApplicationContextUtils.getWebApplicationContext(getServletContext());
-		IDAOContact daoContact = (IDAOContact) ac.getBean("daocontact");
+		IDAOContact daoContact = (IDAOContact) ac.getBean("daoContactProperty");
 		
 		//DAOContact daoContact = new DAOContact();
 		String dbOutput = daoContact.getAllContacts();

@@ -21,8 +21,8 @@
 <a href="removeContact.jsp">remove contact</a><br>
 <a href="searchContact.jsp">search contact</a><br>
 <a href="updateContact.jsp">update contact</a><br>
-<a href="SContactClearTable">clear table</a><br>
-<a href="SContactShowAll">showTable</a><br>
+<a href="ClearTable">clear table</a><br>
+<a href="ShowAllContact">showTable</a><br>
   </div>
   
   <div class="mainBody">
