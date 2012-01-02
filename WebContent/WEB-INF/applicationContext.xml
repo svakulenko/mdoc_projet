@@ -7,11 +7,11 @@
 	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
 
-	<!-- 
-		Because we're currently using "increment" attribute in hbm file, we dont need to 
-	    explicitly initialize id value of all class :)
+	<!-- Because we're currently using "increment" attribute in hbm file, we dont
+		need
+		to explicitly initialize id value of all class :)
 	-->
-	
+
 	<!-- MAIN BEANS  START -->
 	<bean id="homenumber" class="domain.PhoneNumber">
 		<property name="phoneKind" value="home"/>
@@ -85,25 +85,30 @@
 
 
 
-	<!-- DAO CONTACT, CODE INJECTION WITH CONSTRUCTOR 
-	<bean id="daoContactConstructor" class="daoImpl.DAOContact">
-		<constructor-arg ref="contact"/>
+	<!-- DAO CONTACT, CODE INJECTION WITH CONSTRUCTOR <bean id="daoContactConstructor"
+		class="daoImpl.DAOContact">
+		<constructor-arg
+		ref="contact"/>
 	</bean>
 	
-	<bean id="daoEntrepriseConstructor" class="daoImpl.DAOEntreprise">
-		<constructor-arg ref="entreprise"/>
+	<bean
+		id="daoEntrepriseConstructor" class="daoImpl.DAOEntreprise">
+		<constructor-arg
+		ref="entreprise"/>
 	</bean>
 	-->
 
 	<!-- DAO CONTACT, CODE INJECTION WITH PARAMETER (DEFAULT) -->
 	<bean id="daoContactProperty" class="daoImpl.DAOContact">
 		<property name="contact" ref="contact"/>
-		<property name="sessionFactory" ref="sessionFactory"/> <!-- Spring Hibernate declaration-->
+		<property name="sessionFactory" ref="sessionFactory"/>
+		<!-- Spring Hibernate declaration-->
 	</bean>
-	
+
 	<bean id="daoEntrepriseProperty" class="daoImpl.DAOEntreprise">
 		<property name="entreprise" ref="entreprise"/>
-		<property name="sessionFactory" ref="sessionFactory"/> <!-- Spring Hibernate declaration-->
+		<property name="sessionFactory" ref="sessionFactory"/>
+		<!-- Spring Hibernate declaration-->
 	</bean>
 	<!-- DAO HIBERNATE MANAGER. INHERITH HIM, IF YOU NEED TO Hibernate fonctionality
 	<bean
@@ -117,29 +122,23 @@
 
 
 
-	<!-- ASPECTS <bean id="emailerLogger" class="aspect.EmailLogger"/>
-<aop:config>
-<aop:aspect
+	<bean id="emailerLogger" class="aspect.EmailLogger"/>
+	<aop:config>
+		<aop:aspect
 		id="emailLoggerBean"
 		ref="emailerLogger">
-<aop:around
-pointcut="execution(*
-		*hAddContact(
-		*,
-		*, *, String)) and args(*, FirstName, *, *)"
-method="logBeforeA"
-		arg-names="pjp,
-		FirstName"/>
-</aop:aspect>
-</aop:config>
--->
+			<aop:around pointcut="execution(* *hAddContact(*,*, *, String)) and args(*, FirstName, *, *)"
+					    method="logBeforeA"
+						arg-names="pjp, FirstName"/>
+		</aop:aspect>
+	</aop:config>
 	<!-- MAIN BEANS  END -->
 
 
 	<!-- HIBERNATE PART START -->
-	
 
-	<!-- SESSION FACTORY BEAN --> 
+
+	<!-- SESSION FACTORY BEAN -->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
 		<property name="mappingResources">
@@ -163,12 +162,14 @@ method="logBeforeA"
 		<property name="username" value="root"/>
 		<property name="password" value="******"/>
 	</bean>
-	
+
 
 
 	<!--
 	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory"/>
+		<property
+		name="sessionFactory"
+		ref="sessionFactory"/>
 	</bean>
 	-->
 </beans>
