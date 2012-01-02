@@ -44,7 +44,7 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 
 
 	
-	public String hClearTable() {
+	public String clearTable() {
 		System.out.println("::hClearTable start");
 		String rvalue = null;
 		rvalue = getHibernateTemplate().execute(new HibernateCallback<String>() {
@@ -69,7 +69,7 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 
 	}
 
-	public String hAddContact(long id, String FirstName, String LastName,
+	public String addContact(long id, String FirstName, String LastName,
 			String Email) {
 		String rvalue = null;
 		
@@ -88,7 +88,7 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 	
 	
 	//
-	public String hSearchContact(final long id){
+	public String searchContact(final long id){
 		System.out.println("::hSearchContact start id=" + id);
 		String rvalue = null;
 
