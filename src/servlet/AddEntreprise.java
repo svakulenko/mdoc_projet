@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.Iterator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,46 +8,41 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
-
-
-import org.springframework.context.*;
+import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import util.ServerUtils;
 
-import daoInterface.*;
-import domain.PhoneNumber;
-
+import daoInterface.IDAOEntreprise;
 
 /**
- * Servlet implementation class SContactAddContact
+ * Servlet implementation class AddEntreprise
  */
-public class AddContact extends HttpServlet 
-{
+public class AddEntreprise extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static final String ENTREPRISE = "entreprise";
-	public static final String CONTACT = "contact";
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddContact() {
+    public AddEntreprise() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
-		System.out.println("Adding contact info into database....");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	
+		System.out.println("Adding entreprise info into database....");
 		String firstName = request.getParameter("firstname");
 		String lastName = request.getParameter("lastname");
 		String email    = request.getParameter("email");
@@ -58,24 +52,14 @@ public class AddContact extends HttpServlet
 		String country = request.getParameter("country");
 		String phoneKind = request.getParameter("phonekind");
 		String phoneNumber = request.getParameter("phoneNumber");
+		String numSiret = request.getParameter("numsiret");
 		
 		ApplicationContext  appCtx =	
-				WebApplicationContextUtils.getWebApplicationContext(getServletContext());			
-			
-		IDAOContact daoContact = (IDAOContact) appCtx.getBean("daoContactProperty");
-//		String dbOutput = daoContact.addContact(daoContact.getContact());
+				WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		
-		
-//		If you want to use data from form submission, uncomment these following lines:
-		String dbOutput = daoContact.addContact(firstName, 
-												lastName, 
-												email, 
-												street, 
-												city, 
-												zip, 
-												country, 
-												phoneKind, 
-												phoneNumber);
+		// For testing purposes
+		IDAOEntreprise daoEntreprise = (IDAOEntreprise) appCtx.getBean("daoEntrepriseProperty");
+		String dbOutput = daoEntreprise.addEntreprise(daoEntreprise.getEntreprise(),getServletContext());  //<-- Testing purpose
 		
 		String responseUrl = "/addContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
 		System.out.println("::doPost responseUrl=" + responseUrl);

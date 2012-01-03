@@ -32,23 +32,9 @@ public class DAOEntreprise extends HibernateDaoSupport implements IDAOEntreprise
 	}
  
 	@Override
-	public String addEntreprise(Entreprise entreprise1,ServletContext sv) {
-		String rvalue = null;
-		
-		
-		
-		ApplicationContext  appCtx =	
-				WebApplicationContextUtils.getWebApplicationContext(sv);		
-		String dbOutput = "";
-		IDAOContact daoContact = null;
-		IDAOEntreprise daoEntreprise = null;
-			daoEntreprise = (IDAOEntreprise) appCtx.getBean("daoEntrepriseProperty");		
-			daoContact = (IDAOContact) appCtx.getBean("daoContactProperty");
-//		getHibernateTemplate().saveOrUpdate(daoContact.getContact()); // <---- 1
-		Entreprise entreprise = daoEntreprise.getEntreprise();
-		Contact contact = (Contact)entreprise;
-		contact.setContactId(100);
-		getHibernateTemplate().saveOrUpdate(contact); // <----- 2 The same, by why dont it work :((
+	public String addEntreprise(Entreprise entreprise,ServletContext sv) {
+		String rvalue = null;		
+		getHibernateTemplate().saveOrUpdate(entreprise); // <---- 1
 		rvalue = ServerUtils.opFait;
 		return rvalue;
 	}

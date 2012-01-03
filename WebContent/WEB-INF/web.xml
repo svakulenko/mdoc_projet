@@ -87,4 +87,14 @@
     <servlet-name>UpdateContact</servlet-name>
     <url-pattern>/UpdateContact</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddEntreprise</display-name>
+    <servlet-name>AddEntreprise</servlet-name>
+    <servlet-class>servlet.AddEntreprise</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddEntreprise</servlet-name>
+    <url-pattern>/AddEntreprise</url-pattern>
+  </servlet-mapping>
 </web-app>

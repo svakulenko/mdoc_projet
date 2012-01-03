@@ -45,7 +45,7 @@
 <input type="radio" name="type" value="entreprise" onclick="toggle('entreprise')"/> Entreprise
 </form> 
 <div id='div2' style='display:none'>
-<form name="myForm" method="post" action="AddContact" onsubmit="return checkInputFormStop()">
+<form name="myForm" method="post" action="AddEntreprise" onsubmit="return checkInputFormStop()">
     <br/>  <input type="submit" value="Save"> <input type="reset"  value="Clear">
 
 	
