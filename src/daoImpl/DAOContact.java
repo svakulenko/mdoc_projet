@@ -199,4 +199,40 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 
 	}
 
+	@Override
+	public String updateContact(long id,
+								String firstName, 
+								String lastName,
+								String email, 
+								String street, 
+								String city, 
+								String zip,
+								String country, 
+								String phoneKind, 
+								String phoneNumber) 
+	{
+		String rvalue = null;
+
+		Contact contact = new Contact();
+		contact.setContactId(id);
+		contact.setFirstName(firstName);
+		contact.setLastName(lastName);
+		contact.setEmail(email);
+		
+		Address address = new Address();
+		address.setStreet(street);
+		address.setCity(city);
+		address.setZip(zip);
+		address.setCountry(country);
+		contact.setAddress(address); // Uni birectionnel
+		
+		PhoneNumber phone = new PhoneNumber(phoneKind, phoneNumber);
+		contact.getPhoneNumbers().add(phone);
+		phone.setContact(contact);
+		
+		getHibernateTemplate().saveOrUpdate(contact);
+		rvalue = ServerUtils.opFait;
+		return rvalue;
+	}
+
 }
