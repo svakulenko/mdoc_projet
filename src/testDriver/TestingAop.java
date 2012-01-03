@@ -19,7 +19,7 @@ public class TestingAop {
 //	    IMyBean dao = (IMyBean)acx.getBean("hello");
 //	    dao.sayHello("1","2");
 	    IDAOContact dao = (IDAOContact)acx.getBean("daoContactProperty");
-	    dao.addContact("first", "last","mail","street","city","zip","country","pKind","pNumber");
+	    dao.getAllContacts();
 	    
 	   
 	}

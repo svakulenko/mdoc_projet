@@ -146,7 +146,7 @@
 		name="sessionFactory"
 		ref="mySessionFactory"/>
 	</bean>
-		-->
+		
 
 	
 	
@@ -161,6 +161,8 @@
 						arg-names="firstName,lastName,email,street,city,zip,country,phoneKind,phoneNumber"/>
 		</aop:aspect>
 	</aop:config>
+	-->
+	
 	<!-- MAIN BEANS  END -->
 
 

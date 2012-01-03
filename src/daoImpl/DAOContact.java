@@ -1,11 +1,14 @@
 package daoImpl;
 
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -14,13 +17,13 @@ import util.*;
 import daoInterface.IDAOContact;
 import domain.Address;
 import domain.Contact;
+import domain.ContactGroup;
 import domain.PhoneNumber;
 
 public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 
 	Contact contact;
 	String firstName;
-	
 
 	public String getFirstName() {
 		return firstName;
@@ -72,43 +75,35 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 		return rvalue;
 
 	}
-	
-	public String addContact (Contact contact)
-	{
+
+	public String addContact(Contact contact) {
 		String rvalue = null;
 		getHibernateTemplate().saveOrUpdate(contact);
 		rvalue = ServerUtils.opFait;
 		return rvalue;
 	}
-	
-	public String addContact(	String firstName, 
-								String lastName, 
-								String email,
-								String street, 
-								String city, 
-								String zip, 
-								String country,
-								String phoneKind,
-								String phoneNumber) 
-	{
+
+	public String addContact(String firstName, String lastName, String email,
+			String street, String city, String zip, String country,
+			String phoneKind, String phoneNumber) {
 		String rvalue = null;
 
 		Contact contact = new Contact();
 		contact.setFirstName(firstName);
 		contact.setLastName(lastName);
 		contact.setEmail(email);
-		
+
 		Address address = new Address();
 		address.setStreet(street);
 		address.setCity(city);
 		address.setZip(zip);
 		address.setCountry(country);
 		contact.setAddress(address); // Uni birectionnel
-		
+
 		PhoneNumber phone = new PhoneNumber(phoneKind, phoneNumber);
 		contact.getPhoneNumbers().add(phone);
 		phone.setContact(contact);
-		
+
 		getHibernateTemplate().save(contact);
 		rvalue = ServerUtils.opFait;
 		return rvalue;
@@ -116,32 +111,21 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 	}
 
 	/*
-	 
-	 contact = new Contact();
-					contact.setFirstName(firstName);
-					contact.setLastName(lastName);
-					contact.setAddress(address);
-					contact.setEmail(email);
-					
-					address = new Address();
-					address.setStreet(street);
-					address.setCity(city);
-					address.setZip(zip);
-					address.setCountry(country);
-					contact.setAddress(address); // Uni birectionnel
-					
-					phone = new PhoneNumber("HomePhone", "myHomeNumber");
-					contact.getPhoneNumbers().add(phone);
-					phone.setContact(contact);
-					phone = new PhoneNumber("CellPhone", "myCellNumber");
-					contact.getPhoneNumbers().add(phone);
-					phone.setContact(contact);
-	 
-	 
+	 * 
+	 * contact = new Contact(); contact.setFirstName(firstName);
+	 * contact.setLastName(lastName); contact.setAddress(address);
+	 * contact.setEmail(email);
+	 * 
+	 * address = new Address(); address.setStreet(street);
+	 * address.setCity(city); address.setZip(zip); address.setCountry(country);
+	 * contact.setAddress(address); // Uni birectionnel
+	 * 
+	 * phone = new PhoneNumber("HomePhone", "myHomeNumber");
+	 * contact.getPhoneNumbers().add(phone); phone.setContact(contact); phone =
+	 * new PhoneNumber("CellPhone", "myCellNumber");
+	 * contact.getPhoneNumbers().add(phone); phone.setContact(contact);
 	 */
-	
-	
-	
+
 	//
 	public String searchContact(final long id) {
 		System.out.println("::hSearchContact start id=" + id);
@@ -193,13 +177,40 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 
 		try {
 			@SuppressWarnings("unchecked")
-			List<Contact> l = getHibernateTemplate().find("from Contact");
-			System.out.println("list ref=" + l);
-
-			if (l.size() == 0)
-				rvalue = ServerUtils.opNoRecods;
-			else
-				rvalue = ServerUtils.generateTable(l, "Contact table");
+			Session sess = null;
+			try {
+				SessionFactory fact = new Configuration().configure()
+						.buildSessionFactory();
+				sess = fact.openSession();
+				StringBuffer requeteS = new StringBuffer();
+				requeteS.append("from Contact contact")
+						.append(" inner join contact.address as address")
+						.append(" left join contact.phoneNumbers as phoneNumber")
+						.append(" left join contact.contactgroup as contactGroup");
+				Query query = sess.createQuery(requeteS.toString());
+				Iterator ite = query.list().iterator();
+//				while (ite.hasNext()) {
+//					Object[] list = (Object[]) ite.next();
+//					Contact contact = (Contact) list[0];
+//					Address address = (Address) list[1];
+//					PhoneNumber phoneNumber = (PhoneNumber)list[2];
+//					ContactGroup contactGroup = (ContactGroup)list[3];
+//					System.out.println();
+//				}
+				rvalue = ServerUtils.generateTable(ite, "Contact table");
+				sess.close();
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			
+//			List<Object> l = getHibernateTemplate().find(requeteS.toString());
+//			 List<Contact> l = getHibernateTemplate().find("from Contact");
+//			System.out.println("list ref=" + l);
+//
+//			if (l.size() == 0)
+//				rvalue = ServerUtils.opNoRecods;
+//			else
+//				rvalue = ServerUtils.generateTable(l, "Contact table");
 
 		} catch (Exception e) {
 			rvalue = e.getMessage();
@@ -210,17 +221,9 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 	}
 
 	@Override
-	public String updateContact(long id,
-								String firstName, 
-								String lastName,
-								String email, 
-								String street, 
-								String city, 
-								String zip,
-								String country, 
-								String phoneKind, 
-								String phoneNumber) 
-	{
+	public String updateContact(long id, String firstName, String lastName,
+			String email, String street, String city, String zip,
+			String country, String phoneKind, String phoneNumber) {
 		String rvalue = null;
 
 		Contact contact = new Contact();
@@ -228,18 +231,18 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 		contact.setFirstName(firstName);
 		contact.setLastName(lastName);
 		contact.setEmail(email);
-		
+
 		Address address = new Address();
 		address.setStreet(street);
 		address.setCity(city);
 		address.setZip(zip);
 		address.setCountry(country);
 		contact.setAddress(address); // Uni birectionnel
-		
+
 		PhoneNumber phone = new PhoneNumber(phoneKind, phoneNumber);
 		contact.getPhoneNumbers().add(phone);
 		phone.setContact(contact);
-		
+
 		getHibernateTemplate().saveOrUpdate(contact);
 		rvalue = ServerUtils.opFait;
 		return rvalue;
