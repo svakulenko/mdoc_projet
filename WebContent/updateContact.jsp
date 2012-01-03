@@ -32,8 +32,6 @@
 <div style='display:block'>
 <form name="myForm" method="post" action="UpdateContact">
     <br/>  <input type="submit" value="Save"> <input type="reset"  value="Clear">
-	<input type="radio" name="typeBtn" value="contact" CHECKED onclick="toggle('contact')" /> Contact
-	<input type="radio" name="typeBtn" value="entreprise" onclick="toggle('entreprise')"/> Entreprise
 
     <table><tbody>   		           
 			

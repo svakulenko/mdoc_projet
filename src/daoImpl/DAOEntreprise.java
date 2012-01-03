@@ -44,9 +44,10 @@ public class DAOEntreprise extends HibernateDaoSupport implements IDAOEntreprise
 		IDAOEntreprise daoEntreprise = null;
 			daoEntreprise = (IDAOEntreprise) appCtx.getBean("daoEntrepriseProperty");		
 			daoContact = (IDAOContact) appCtx.getBean("daoContactProperty");
-		//getHibernateTemplate().saveOrUpdate(daoContact.getContact()); // <---- 1
+//		getHibernateTemplate().saveOrUpdate(daoContact.getContact()); // <---- 1
 		Entreprise entreprise = daoEntreprise.getEntreprise();
 		Contact contact = (Contact)entreprise;
+		contact.setContactId(100);
 		getHibernateTemplate().saveOrUpdate(contact); // <----- 2 The same, by why dont it work :((
 		rvalue = ServerUtils.opFait;
 		return rvalue;
@@ -60,7 +61,7 @@ public class DAOEntreprise extends HibernateDaoSupport implements IDAOEntreprise
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	@Override
 	public Entreprise searchEntreprise(long id) {
 		// TODO Auto-generated method stub

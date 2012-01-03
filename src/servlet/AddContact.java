@@ -66,7 +66,7 @@ public class AddContact extends HttpServlet
 		String dbOutput = "";
 		IDAOContact daoContact = null;
 		IDAOEntreprise daoEntreprise = null;
-		if (contactType.equals(ENTREPRISE))
+		if (/*contactType.equals(ENTREPRISE)*/ true)
 		{
 			// For testing purposes
 			daoEntreprise = (IDAOEntreprise) appCtx.getBean("daoEntrepriseProperty");
