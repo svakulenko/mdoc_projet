@@ -75,7 +75,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>SearchContact</servlet-name>
-    <url-pattern>/SearchContact</url-pattern>
+    <url-pattern>/SearchContact/*</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>

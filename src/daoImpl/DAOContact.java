@@ -127,13 +127,25 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 	 */
 
 	//
-	public String searchContact(final long id) {
+	public String searchContact(long id,
+			String firstName, 
+			String lastName,
+			String email,
+			String street,
+			String city,
+			String zip,
+			String country,
+			String phoneKind,
+			String phoneNumber,
+			String numSiret
+		 ){
+	//public String searchContact(final long id) {
 		System.out.println("::hSearchContact start id=" + id);
 		String rvalue = null;
 
 		@SuppressWarnings("unchecked")
 		List<Contact> l = this.getHibernateTemplate().find(
-				"from Contact contact where contact.id = ?", id);
+				"from Contact contact where contact.firstName = ?", firstName);
 		System.out.println("l.size=" + l.size());
 
 		if (l.size() != 0)

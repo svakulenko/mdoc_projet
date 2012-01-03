@@ -167,6 +167,33 @@ static public String generateRow(Contact c,Address a, PhoneNumber p, ContactGrou
 		return generatedHtml;
 	}
 	
+	static public void showParameters(
+			String firstName
+			, String lastName
+			, String email
+			, String street
+			, String city
+			, String zip
+			, String country
+			, String phoneKind
+			, String phoneNumber
+			, String numSiret
+			){
+		
+		System.out.println("firstname="+ firstName);
+		System.out.println("lastname="+ lastName);
+		System.out.println("email="+ email);
+		System.out.println("street="+ street);
+		System.out.println("city="+ city);
+		System.out.println("zip="+ zip);
+		System.out.println("country="+ country);
+		System.out.println("phonekind="+ phoneKind);
+		System.out.println("phonenumber="+ phoneNumber);
+		System.out.println("numSiret="+ numSiret);
+	}
+	
+	
+	
 	public static String opFait = "<i><b>operation est Fait</i></b>";
 	public static String opNoRecods = "<i><b>Pas de records dans base de donées</i></b>";
 	public static String opTableRemoved  = "<i><b>Table est effacé</i></b>";
