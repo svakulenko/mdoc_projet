@@ -6,7 +6,7 @@
 	http://www.springframework.org/schema/aop
 	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
-
+	
 	<!-- Because we're currently using "increment" attribute in hbm file, we dont
 		need
 		to explicitly initialize id value of all class :)
@@ -148,16 +148,17 @@
 	</bean>
 		-->
 
-
-
+	
+	
+	
 	<bean id="emailerLogger" class="aspect.EmailLogger"/>
+	<bean id="inputVerification" class="aspect.InputValidation"/>
 	<aop:config>
-		<aop:aspect
-		id="emailLoggerBean"
-		ref="emailerLogger">
-			<aop:around pointcut="execution(* *hAddContact(*,*, *, String)) and args(*, FirstName, *, *)"
-					    method="logBeforeA"
-						arg-names="pjp, FirstName"/>
+		<aop:aspect id="addContact" ref="inputVerification">
+			<aop:around pointcut="execution(* daoImpl.DAOContact.addContact(*,*, *, *,*,*,*,*,*)) 
+				and args(firstName,lastName,email,street,city,zip,country,phoneKind,phoneNumber)"
+					    method="validateBefore"
+						arg-names="firstName,lastName,email,street,city,zip,country,phoneKind,phoneNumber"/>
 		</aop:aspect>
 	</aop:config>
 	<!-- MAIN BEANS  END -->
@@ -202,4 +203,14 @@
 		ref="sessionFactory"/>
 	</bean>
 	-->
+	
+	
+
+	
+	
 </beans>
+	
+
+<!-- arg-names="firstName,lastName,email,street,city,zip,country,phoneKind,phoneNumber" 
+and args(*,*,*,*,*,*,*,*,*)"/>
+-->

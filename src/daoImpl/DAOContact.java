@@ -19,6 +19,16 @@ import domain.PhoneNumber;
 public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 
 	Contact contact;
+	String firstName;
+	
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
 	public DAOContact() {
 	}
@@ -233,6 +243,13 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 		getHibernateTemplate().saveOrUpdate(contact);
 		rvalue = ServerUtils.opFait;
 		return rvalue;
+	}
+
+	@Override
+	public String addContact(String firstName, String lastName) {
+		// TODO Auto-generated method stub
+		System.out.println("Executing addContact...");
+		return null;
 	}
 
 }

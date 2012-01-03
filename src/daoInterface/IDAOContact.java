@@ -17,8 +17,9 @@ public interface IDAOContact {
 								String phoneKind,
 								String phoneNumber
 							 );
+	public String addContact(String firstName,String lastName);
 	// Used by Spring framework
-	public String addContact (Contact contact);
+	public String addContact(Contact contact);
 	public String updateContact(long id,
 			String firstName, 
 			String lastName,

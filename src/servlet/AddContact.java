@@ -49,7 +49,7 @@ public class AddContact extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		System.out.println("Adding contact info into database....");
-		String firstName = request.getParameter("firstname");
+		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastname");
 		String email    = request.getParameter("email");
 		String street = request.getParameter("street");	
@@ -75,6 +75,7 @@ public class AddContact extends HttpServlet
 												country, 
 												phoneKind, 
 												phoneNumber);
+		daoContact.addContact("first", "last");
 		
 		String responseUrl = "/addContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
 		System.out.println("::doPost responseUrl=" + responseUrl);

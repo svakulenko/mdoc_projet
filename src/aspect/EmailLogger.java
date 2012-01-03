@@ -14,11 +14,11 @@ public class EmailLogger {
 		}
 	
 	
-	public void logBeforeA(ProceedingJoinPoint pjp, String FirstName) throws
+	public void logBeforeA(ProceedingJoinPoint pjp, String firstName,String lastName) throws
 	Throwable {
-	if (!FirstName.contains("Bill"))
+	if (!firstName.contains("Bill"))
 	{
-		System.out.println("this is not Bill, continue...");
+		System.out.println("this is not Bill, continue..." + firstName + lastName);
 	//Continue the normal execution
 	pjp.proceed();
 	}
