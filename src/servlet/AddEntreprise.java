@@ -56,11 +56,20 @@ public class AddEntreprise extends HttpServlet {
 		
 		ApplicationContext  appCtx =	
 				WebApplicationContextUtils.getWebApplicationContext(getServletContext());
-		
-		// For testing purposes
 		IDAOEntreprise daoEntreprise = (IDAOEntreprise) appCtx.getBean("daoEntrepriseProperty");
-		String dbOutput = daoEntreprise.addEntreprise(daoEntreprise.getEntreprise(),getServletContext());  //<-- Testing purpose
 		
+		
+//		String dbOutput = daoEntreprise.addEntreprise(daoEntreprise.getEntreprise()); 
+		String dbOutput = daoEntreprise.addEntreprise(firstName, 
+				lastName, 
+				email, 
+				street, 
+				city, 
+				zip, 
+				country, 
+				phoneKind, 
+				phoneNumber,
+				new Long(numSiret));
 		String responseUrl = "/addContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
 		System.out.println("::doPost responseUrl=" + responseUrl);
 

@@ -13,7 +13,8 @@
 	-->
 
 	<!-- MAIN BEANS  START -->
-	<bean id="homenumber" class="domain.PhoneNumber">
+	<!-- BEAN FOR CONTACT -->
+	<bean id="homenumberContact" class="domain.PhoneNumber">
 		<property name="phoneKind" value="home"/>
 		<property name="phoneNumber" value="99999"/>
 		<property name="contact" ref="contact"/>
@@ -21,11 +22,11 @@
 	</bean>
 
 
-	<bean id="mobilenumber" class="domain.PhoneNumber">
+	<bean id="mobilenumberContact" class="domain.PhoneNumber">
 		<property name="phoneKind" value="mobile"/>
 		<property name="phoneNumber" value="88888"/>
 		<property name="contact" ref="contact"/>
-	</bean>
+	</bean>			
 
 	<bean id="address" class="domain.Address">
 		<property name="street" value="rue address"/>
@@ -36,7 +37,7 @@
 		-->
 	</bean>
 
-	<bean id="contactgroup" class="domain.ContactGroup">
+	<bean id="contactgroupContact" class="domain.ContactGroup">
 		<property name="groupName" value="Default Name"/>
 		<property name="contacts">
 			<set>
@@ -44,7 +45,7 @@
 			</set>
 		</property>
 	</bean>
-
+	
 
 	<bean id="contact" class="domain.Contact">
 		<property name="email" value="spring@gmail.com"/>
@@ -53,17 +54,43 @@
 		<property name="address" 	   ref="address"/>
 		<property name="phoneNumbers">
 			<set>
-				<ref bean="homenumber"/>
-				<ref bean="mobilenumber"/>
+				<ref bean="homenumberContact"/>
+				<ref bean="mobilenumberContact"/>
 			</set>
 		</property>
 		<property name="contactgroup">
 			<set>
-				<ref bean="contactgroup"/>
+				<ref bean="contactgroupContact"/>
 			</set>
 		</property>
 	</bean>
+	
+	<!-- BEANs for entreprise -->
+	<bean id="homenumberEntreprise" class="domain.PhoneNumber">
+		<property name="phoneKind" value="home"/>
+		<property name="phoneNumber" value="99999"/>
+		<property name="contact" ref="entreprise"/>
 
+	</bean>
+
+
+	<bean id="mobilenumberEntreprise" class="domain.PhoneNumber">
+		<property name="phoneKind" value="mobile"/>
+		<property name="phoneNumber" value="88888"/>
+		<property name="contact" ref="entreprise"/>
+	</bean>
+			
+
+	<bean id="contactgroupEntreprise" class="domain.ContactGroup">
+		<property name="groupName" value="Default Name"/>
+		<property name="contacts">
+			<set>
+				<ref bean="entreprise"/>
+			</set>
+		</property>
+	</bean>
+	
+	
 	<bean id="entreprise" class="domain.Entreprise">
 		<property name="numSiret" value="1111111" />
 		<property name="email" value="spring@gmail.com"/>
@@ -72,15 +99,16 @@
 		<property name="address" 	   ref="address"/>
 		<property name="phoneNumbers">
 			<set>
-				<ref bean="homenumber"/>
-				<ref bean="mobilenumber"/>
+				<ref bean="homenumberEntreprise"/>
+				<ref bean="mobilenumberEntreprise"/>
 			</set>
 		</property>
 		<property name="contactgroup">
 			<set>
-				<ref bean="contactgroup"/>
+				<ref bean="contactgroupEntreprise"/>
 			</set>
 		</property>
+		
 	</bean>
 
 

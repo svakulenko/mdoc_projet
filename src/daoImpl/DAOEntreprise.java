@@ -1,19 +1,22 @@
 package daoImpl;
 
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Set;
 
-import javax.servlet.ServletContext;
-
-import org.springframework.context.ApplicationContext;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import util.ServerUtils;
 
-import daoInterface.IDAOContact;
 import daoInterface.IDAOEntreprise;
+import domain.Address;
 import domain.Contact;
 import domain.Entreprise;
+import domain.PhoneNumber;
 
 public class DAOEntreprise extends HibernateDaoSupport implements IDAOEntreprise {
 	
@@ -32,7 +35,7 @@ public class DAOEntreprise extends HibernateDaoSupport implements IDAOEntreprise
 	}
  
 	@Override
-	public String addEntreprise(Entreprise entreprise,ServletContext sv) {
+	public String addEntreprise(Entreprise entreprise) {
 		String rvalue = null;		
 		getHibernateTemplate().saveOrUpdate(entreprise); // <---- 1
 		rvalue = ServerUtils.opFait;
@@ -45,19 +48,75 @@ public class DAOEntreprise extends HibernateDaoSupport implements IDAOEntreprise
 			String country, String phoneKind, String phoneNumber,
 			long siretNumber) {
 		// TODO Auto-generated method stub
-		return null;
+		String rvalue = null;
+
+		Entreprise entreprise = new Entreprise();
+		entreprise.setFirstName(firstName);
+		entreprise.setLastName(lastName);
+		entreprise.setEmail(email);
+		entreprise.setNumSiret(siretNumber);
+		
+		Address address = new Address();
+		address.setStreet(street);
+		address.setCity(city);
+		address.setZip(zip);
+		address.setCountry(country);
+		entreprise.setAddress(address); // Uni birectionnel
+		
+		PhoneNumber phone = new PhoneNumber(phoneKind, phoneNumber);
+		entreprise.getPhoneNumbers().add(phone);
+		phone.setContact(entreprise);
+		
+		getHibernateTemplate().save(entreprise);
+		rvalue = ServerUtils.opFait;
+		return rvalue;
 	}
 	
 	@Override
-	public Entreprise searchEntreprise(long id) {
+	public String searchEntreprise(long id) {
 		// TODO Auto-generated method stub
-		return null;
+		System.out.println("::hSearchContact start id=" + id);
+		String rvalue = null;
+
+		@SuppressWarnings("unchecked")
+		List<Contact> l = this.getHibernateTemplate().find(
+				"from Contact contact where contact.id = ?", id);
+		System.out.println("l.size=" + l.size());
+
+		if (l.size() != 0)
+			rvalue = ServerUtils.generateTable(l, "Contact table");
+		else
+			rvalue = ServerUtils.opNoRecods;
+
+		return rvalue;
 	}
 
 	@Override
-	public Entreprise deleteEntreprise(long id) {
+	public String deleteEntreprise(final long id) {
 		// TODO Auto-generated method stub
-		return null;
+		System.out.println("::deleteContact start");
+		String rvalue = null;
+		rvalue = getHibernateTemplate().execute(
+				new HibernateCallback<String>() {
+
+					@Override
+					public String doInHibernate(Session arg0)
+							throws HibernateException, SQLException {
+
+						Query q = arg0
+								.createQuery("from Contact where id = :value ");
+						q.setParameter("value", id);
+						@SuppressWarnings("unchecked")
+						List<Contact> l = q.list();
+						for (Contact c : l) {
+							arg0.delete(c);
+						}
+
+						return ServerUtils.opFait;
+					}
+				});
+
+		return rvalue;
 	}
 
 	@Override
