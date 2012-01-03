@@ -9,6 +9,9 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -127,6 +130,21 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 	 */
 
 	//
+	public String searchContactSimple(final String id) {
+		String rvalue = null;
+		@SuppressWarnings("unchecked")
+		List<Contact> l = this.getHibernateTemplate().find(
+				"from Contact contact where contact.id = ?", new Long(id));
+		
+		System.out.println("l.size=" + l.size());
+
+		if (l.size() != 0)
+			rvalue = ServerUtils.generateTable(l, "Contact table");
+		else
+			rvalue = ServerUtils.opNoRecods;
+
+		return rvalue;
+	}
 	public String searchContact(long id,
 			String firstName, 
 			String lastName,
@@ -139,13 +157,16 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 			String phoneNumber,
 			String numSiret
 		 ){
-	//public String searchContact(final long id) {
 		System.out.println("::hSearchContact start id=" + id);
 		String rvalue = null;
 
+		DetachedCriteria dc = DetachedCriteria.forClass(Contact.class);
+		dc.add(Restrictions.like("FirstName", firstName));
+		
 		@SuppressWarnings("unchecked")
 		List<Contact> l = this.getHibernateTemplate().find(
 				"from Contact contact where contact.firstName = ?", firstName);
+		
 		System.out.println("l.size=" + l.size());
 
 		if (l.size() != 0)
@@ -171,6 +192,7 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 						Query q = arg0
 								.createQuery("from Contact where id = :value ");
 						q.setParameter("value", id);
+						
 						@SuppressWarnings("unchecked")
 						List<Contact> l = q.list();
 						for (Contact c : l) {
