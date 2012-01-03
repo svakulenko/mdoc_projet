@@ -148,20 +148,20 @@
 	</bean>
 		
 
-	
+	-->
 	
 	
 	<bean id="emailerLogger" class="aspect.EmailLogger"/>
 	<bean id="inputVerification" class="aspect.InputValidation"/>
 	<aop:config>
 		<aop:aspect id="addContact" ref="inputVerification">		
-			<aop:around pointcut="execution(* daoImpl.DAOContact.addContact(*,*, *, *,*,*,*,*,*)) 
+			<aop:before pointcut="execution(* daoImpl.DAOContact.addContact(*,*, *, *,*,*,*,*,*)) 
 				and args(firstName,lastName,email,street,city,zip,country,phoneKind,phoneNumber)"
 					    method="validateBefore"
 						arg-names="firstName,lastName,email,street,city,zip,country,phoneKind,phoneNumber"/>
 		</aop:aspect>
 	</aop:config>
-	-->
+	
 	
 	<!-- MAIN BEANS  END -->
 

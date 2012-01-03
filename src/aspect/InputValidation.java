@@ -27,6 +27,8 @@ public class InputValidation
 			System.err.println("email is null, please try again");
 			System.exit(1);
 		}
+		
+		System.out.println("Input data are well structured, inserting to the db.....");
 	}
 	public void validateAfterReturning()
 	{
