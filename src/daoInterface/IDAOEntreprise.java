@@ -12,7 +12,7 @@ public interface IDAOEntreprise
 	public Entreprise getEntreprise();
 	public void setEntreprise(Entreprise entreprise);
 	
-	public String addEntreprise(Entreprise entreprise,ServletContext sv);
+	public String addEntreprise(Entreprise entreprise);
 	public String addEntreprise(	String firstName, 
 			String lastName,
 			String email,
@@ -24,8 +24,8 @@ public interface IDAOEntreprise
 			String phoneNumber,
 			long siretNumber
 		 );
-	public Entreprise searchEntreprise(long id);
-	public Entreprise deleteEntreprise(long id);
+	public String searchEntreprise(long id);
+	public String deleteEntreprise(long id);
 	public Set<Entreprise> getAllEntreprise();
 }
 

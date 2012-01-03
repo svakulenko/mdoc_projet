@@ -66,7 +66,6 @@ public class AddContact extends HttpServlet
 //		String dbOutput = daoContact.addContact(daoContact.getContact());
 		
 		
-//		If you want to use data from form submission, uncomment these following lines:
 		String dbOutput = daoContact.addContact(firstName, 
 												lastName, 
 												email, 

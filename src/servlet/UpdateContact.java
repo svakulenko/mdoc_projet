@@ -68,7 +68,7 @@ public class UpdateContact extends HttpServlet {
 		{
 			// For testing purposes
 			daoEntreprise = (IDAOEntreprise) appCtx.getBean("daoEntrepriseProperty");
-			dbOutput = daoEntreprise.addEntreprise(daoEntreprise.getEntreprise(),getServletContext());  //<-- Testing purpose
+			dbOutput = daoEntreprise.addEntreprise(daoEntreprise.getEntreprise());  //<-- Testing purpose
 		}
 		else 
 		{		
