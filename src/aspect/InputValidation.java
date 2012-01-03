@@ -1,6 +1,6 @@
 package aspect;
 
-public class InputValidation 
+public class InputValidation
 {
 	public void validateBefore(String firstName, 
 			String lastName,
@@ -12,16 +12,28 @@ public class InputValidation
 			String phoneKind,
 			String phoneNumber)
 	{
-		System.out.println("Firstname: " + firstName);
-		System.out.println("PhoneKind: " + phoneKind);
-		System.out.println("********************************************************");
+		if (firstName.isEmpty())
+		{
+			System.err.println("First Name is null, please try again");
+			System.exit(1);
+		}
+		if (lastName.isEmpty())
+		{
+			System.err.println("Last Name is null, please try again");
+			System.exit(1);
+		}
+		if (email.isEmpty())
+		{
+			System.err.println("email is null, please try again");
+			System.exit(1);
+		}
 	}
 	public void validateAfterReturning()
 	{
-		System.out.println("Validate after returning");
+		System.out.println("Well organized input datas");
 	}
 	public void validateAfterThrowing()
 	{
-		System.out.println("Validate after throwing");
+		System.out.println("Exception...");
 	}
 }
