@@ -236,15 +236,20 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 //			} catch (Exception e) {
 //				System.out.println(e.getMessage());
 //			}
-//			
-////			List<Object> l = getHibernateTemplate().find(requeteS.toString());
-			 List<Contact> l = getHibernateTemplate().find("from Contact");
+//					
+			StringBuffer requeteS = new StringBuffer();
+			requeteS.append("from Contact contact")
+					.append(" left join contact.address as address")
+					.append(" left join contact.phoneNumbers as phoneNumber")
+					.append(" left join contact.contactgroup as contactGroup");
+			List<Object[]> l = getHibernateTemplate().find(requeteS.toString());
+//			 List<Contact> l = getHibernateTemplate().find("from Contact");
 			System.out.println("list ref=" + l);
 
 			if (l.size() == 0)
 				rvalue = ServerUtils.opNoRecods;
 			else
-				rvalue = ServerUtils.generateTable(l, "Contact table");
+				rvalue = ServerUtils.generateAllTable(l, "Contact table");
 
 		} catch (Exception e) {
 			rvalue = e.getMessage();

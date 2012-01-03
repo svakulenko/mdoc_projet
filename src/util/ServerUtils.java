@@ -116,9 +116,9 @@ static public String generateRow(Contact c,Address a, PhoneNumber p, ContactGrou
 		generatedHtml += "</tr>";
 		return generatedHtml;
 	}
-	static public String generateTable(Iterator ite, String header) {
+	static public String generateAllTable(List<Object[]> list, String header) {
 		String generatedHtml = "";
-		if (ite.hasNext()) {
+		if (list.size() != 0) {
 
 			generatedHtml += "<div align=\"center\">";
 			generatedHtml += "<br><br>";
@@ -126,12 +126,12 @@ static public String generateRow(Contact c,Address a, PhoneNumber p, ContactGrou
 			//generatedHtml += "<TABLE BORDER=\"1\">";
 			generatedHtml += "<CAPTION><B>" + header + "</B> </CAPTION>";
 			generatedHtml += generateRow("<B>ID</B>", "<B>First Name</B>", "<B>Last Name</B>", "<B>Email</B>", "<B>Street</B>", "<B>City</B>", "<B>Zip</B>", "<B>Country</B>", "<B>PhoneKind</B>", "<B>PhoneNumber</B>", "<B>GroupName</B>");
-			while (ite.hasNext()) {
-				Object[] list = (Object[]) ite.next();
-				Contact contact = (Contact) list[0];
-				Address address = (Address) list[1];
-				PhoneNumber phoneNumber = (PhoneNumber)list[2];
-				ContactGroup contactGroup = (ContactGroup)list[3];
+			for (Object[] objs: list)
+			{
+				Contact contact = (Contact) objs[0];
+				Address address = (Address) objs[1];
+				PhoneNumber phoneNumber = (PhoneNumber)objs[2];
+				ContactGroup contactGroup = (ContactGroup)objs[3];
 				generatedHtml += generateRow(contact, address, phoneNumber, contactGroup);
 				System.out.println();
 			}
