@@ -47,9 +47,48 @@
 <input type="radio" name="type" value="contact" CHECKED onclick="toggle('contact')" /> Contact
 <input type="radio" name="type" value="entreprise" onclick="toggle('entreprise')"/> Entreprise
 </form> 
+
+
 <div id='div2' style='display:none'>
-<form name="myForm" method="post" action="SearchContact/Entreprise" onsubmit="">
-    <br/>  <input type="submit" value="Save"> <input type="reset"  value="Clear">
+<form name="myForm" method="post" action="SearchContact/EntrepriseSimple" onsubmit="">
+    <br/>
+    <input type="submit" value="Search"> 
+    <input type="reset"  value="Clear">
+    <label for="lab">Simple search (find with ?)</label>
+    
+    <table><tbody>
+            <tr>
+                <td style="width: 140px;">ID:</td>
+                <td valign="top"> <input type="text"  name="id" size="25" value="" > </td>
+            </tr>
+    </tbody></table>
+</form>
+
+</div>
+<div id='div1' style='display:block'>
+<form name="myForm" method="post" action="SearchContact/ContactSimple" onsubmit="">
+    <br/>
+    <input type="submit" value="Search"> 
+    <input type="reset"  value="Clear">
+    <label for="lab">Simple search (find with ?)</label>
+
+    <table><tbody>
+            <tr>
+                <td style="width: 140px;">ID:</td>
+                <td valign="top"> <input type="text"  name="id" size="25" value=""> </td>
+            </tr>
+    </tbody></table>
+</form>
+
+
+</div>
+
+<div id='div2' style='display:none'>
+<form name="myForm" method="post" action="SearchContact/EntrepriseCriteria" onsubmit="">
+    <br/>
+    <input type="submit" value="Search"> 
+    <input type="reset"  value="Clear">
+    <label for="lab">Simple search (find by Criteria)</label>
 
 	
 
@@ -109,8 +148,11 @@
 
 </div>
 <div id='div1' style='display:block'>
-<form name="myForm" method="post" action="SearchContact/Contact" onsubmit="">
-    <br/>  <input type="submit" value="Save"> <input type="reset"  value="Clear">
+<form name="myForm" method="post" action="SearchContact/ContactCriteria" onsubmit="">
+    <br/>
+    <input type="submit" value="Search"> 
+    <input type="reset"  value="Clear">
+    <label for="lab">Simple search (find by Criteria)</label>
 
     <table><tbody>
 
@@ -164,6 +206,13 @@
 
 
 </div>
+
+
+
+
+
+
+
 
 </body>
 </html>

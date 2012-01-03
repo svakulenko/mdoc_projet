@@ -48,6 +48,7 @@ public class SearchContact extends HttpServlet {
 		System.out.println("request.getContextPath()" + request.getContextPath());
 		
 		//Integer id = Integer.parseInt(request.getParameter("contactID"));
+		String id 		 = request.getParameter("id");
 		String firstName = request.getParameter("firstname");
 		String lastName = request.getParameter("lastname");
 		String email    = request.getParameter("email");
@@ -61,16 +62,27 @@ public class SearchContact extends HttpServlet {
 		
 		ServerUtils.showParameters(firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);
 		
+		ApplicationContext  ac =	WebApplicationContextUtils.getWebApplicationContext(getServletContext());
+		IDAOContact daoContact = (IDAOContact) ac.getBean("daoContactProperty");
+		
+		
 		String dbOutput = null;
-		if (reqUrl.matches(".*SearchContact/Entreprise")){
+		if (reqUrl.matches(".*SearchContact/EntrepriseSimple")){
 			System.out.println("entreprise");
 		}
-		else if (reqUrl.matches(".*SearchContact/Contact")){
-			System.out.println("contact");
-			ApplicationContext  ac =	WebApplicationContextUtils.getWebApplicationContext(getServletContext());
-			IDAOContact daoContact = (IDAOContact) ac.getBean("daoContactProperty");
+		else if (reqUrl.matches(".*SearchContact/ContactSimple")){
+			dbOutput = daoContact.searchContactSimple(id);
+		}
+		else if (reqUrl.matches(".*SearchContact/EntrepriseCriteria")){
+			System.out.println("entreprise");
+		}
+		else if (reqUrl.matches(".*SearchContact/ContactCriteria")){
 			dbOutput = daoContact.searchContact(0, firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);
 		}
+		else
+			System.out.println("no of if/else of criteria, warning");
+		 
+		
 
 
 		String responseUrl = "/" + "accueil.jsp" + ServerUtils.getNewParameter("dbOutputRaw", dbOutput);

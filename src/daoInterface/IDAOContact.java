@@ -30,6 +30,7 @@ public interface IDAOContact {
 			String phoneKind,
 			String phoneNumber
 		 );
+	public String searchContactSimple(String id );
 	public String searchContact(long id,
 			String firstName, 
 			String lastName,
