@@ -45,7 +45,7 @@
 <input type="radio" name="type" value="entreprise" onclick="toggle('entreprise')"/> Entreprise
 </form> 
 <div id='div2' style='display:none'>
-<form name="myForm" method="post" action="AddEntreprise" onsubmit="return checkInputFormStop()">
+<form name="myForm" method="post" action="AddEntreprise">
     <br/>  <input type="submit" value="Save"> <input type="reset"  value="Clear">
 
 	
@@ -58,113 +58,113 @@
 
             <tr>
                 <td style="width: 140px;">First Name:</td>
-                <td valign="top"> <input type="text"  name="firstname" size="25" value="first name value"> </td>
+                <td valign="top"> <input type="text"  name="firstname" size="25" value="Beckham"> </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">Last Name:</td>
-                <td valign="top"> <input type="text"  name="lastname" size="25" value="last name value"> </td>
+                <td valign="top"> <input type="text"  name="lastname" size="25" value="David"> </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">Email:</td>
-                <td valign="top"> <input type="text"  name="email" size="25" value="email value " > </td>
+                <td valign="top"> <input type="text"  name="email" size="25" value="email david@mu.com " > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*Street:</td>
-                <td valign="top"> <input type="text"  name="street" size="25" value="street value " > </td>
+                <td valign="top"> <input type="text"  name="street" size="25" value="Jussieu" > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*City:</td>
-                <td valign="top"> <input type="text"  name="city" size="25" value="City value " > </td>
+                <td valign="top"> <input type="text"  name="city" size="25" value="Paris" > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*zip:</td>
-                <td valign="top"> <input type="text"  name="zip" size="25" value="zip value " > </td>
+                <td valign="top"> <input type="text"  name="zip" size="25" value="75000 " > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*Country:</td>
-                <td valign="top"> <input type="text"  name="country" size="25" value="Country value " > </td>
+                <td valign="top"> <input type="text"  name="country" size="25" value="France" > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*PhoneKind:</td>
-                <td valign="top"> <input type="text"  name="phonekind" size="25" value="Nokia value " > </td>
+                <td valign="top"> <input type="text"  name="phonekind" size="25" value="Cell Phone " > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*PhoneNumber:</td>
-                <td valign="top"> <input type="text"  name="phoneNumber" size="25" value="123 " > </td>
+                <td valign="top"> <input type="text"  name="phoneNumber" size="25" value="01 23 45 67 89" > </td>
             </tr>
 
 
 			<tr>
                 <td style="width: 140px;">*GroupName:</td>
-                <td valign="top"> <input type="text"  name="groupName" size="25" value="Groupe " > </td>
+                <td valign="top"> <input type="text"  name="groupName" size="25" value="Buddy" > </td>
             </tr>
     </tbody></table>
 </form>
 
 </div>
 <div id='div1' style='display:block'>
-<form name="myForm" method="post" action="AddContact" onsubmit="return checkInputFormStop()">
+<form name="myForm" method="post" action="AddContact">
     <br/>  <input type="submit" value="Save"> <input type="reset"  value="Clear">
 
     <table><tbody>
 
             <tr>
                 <td style="width: 140px;">First Name:</td>
-                <td valign="top"> <input type="text"  name="firstName" size="25" value="first name value"> </td>
+                <td valign="top"> <input type="text"  name="firstName" size="25" value="Bill"> </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">Last Name:</td>
-                <td valign="top"> <input type="text"  name="lastname" size="25" value="last name value"> </td>
+                <td valign="top"> <input type="text"  name="lastname" size="25" value="Gate"> </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">Email:</td>
-                <td valign="top"> <input type="text"  name="email" size="25" value="email value " > </td>
+                <td valign="top"> <input type="text"  name="email" size="25" value="bill@mycrosoft.com" > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*Street:</td>
-                <td valign="top"> <input type="text"  name="street" size="25" value="street value " > </td>
+                <td valign="top"> <input type="text"  name="street" size="25" value="Gare de Lyon" > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*City:</td>
-                <td valign="top"> <input type="text"  name="city" size="25" value="City value " > </td>
+                <td valign="top"> <input type="text"  name="city" size="25" value="Paris" > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*zip:</td>
-                <td valign="top"> <input type="text"  name="zip" size="25" value="zip value " > </td>
+                <td valign="top"> <input type="text"  name="zip" size="25" value="75000" > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*Country:</td>
-                <td valign="top"> <input type="text"  name="country" size="25" value="Country value " > </td>
+                <td valign="top"> <input type="text"  name="country" size="25" value="France" > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*PhoneKind:</td>
-                <td valign="top"> <input type="text"  name="phonekind" size="25" value="Nokia value " > </td>
+                <td valign="top"> <input type="text"  name="phonekind" size="25" value="Offical Phone" > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*PhoneNumber:</td>
-                <td valign="top"> <input type="text"  name="phoneNumber" size="25" value="456 " > </td>
+                <td valign="top"> <input type="text"  name="phoneNumber" size="25" value="09 87 65 43 21 " > </td>
             </tr>
 
 
 			<tr>
                 <td style="width: 140px;">*GroupName:</td>
-                <td valign="top"> <input type="text"  name="groupName" size="25" value="Groupe " > </td>
+                <td valign="top"> <input type="text"  name="groupName" size="25" value="Entreprise " > </td>
             </tr>
     </tbody></table>
 </form>

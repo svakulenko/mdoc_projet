@@ -44,7 +44,7 @@
 				<ref bean="contact"/>
 			</set>
 		</property>
-	</bean>
+	</bean> 
 	
 
 	<bean id="contact" class="domain.Contact">
