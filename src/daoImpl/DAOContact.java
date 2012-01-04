@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 
+import org.hibernate.FetchMode;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -160,15 +161,38 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 		System.out.println("::hSearchContact start id=" + id);
 		String rvalue = null;
 
-		DetachedCriteria dc = DetachedCriteria.forClass(Contact.class);
-		dc.add(Restrictions.like("FirstName", firstName));
 		
+		DetachedCriteria dc = DetachedCriteria.forClass(Contact.class)
+				.setFetchMode("address", FetchMode.JOIN)
+				.createAlias("address","a")
+				.add(Restrictions.like("firstName", firstName+"%"))
+				.add(Restrictions.like("lastName", lastName+"%"))
+				.add(Restrictions.like("email", email+"%"))
+				.add(Restrictions.like("a.street", street+"%"))
+				.add(Restrictions.like("a.city", city+"%"))
+				.add(Restrictions.like("a.zip", zip+"%"))
+				.add(Restrictions.like("a.country", country+"%"))
+				;;
+								
+
+		;
+		
+
+		
+//		dc.add(Restrictions.like("zip", zip+"%"));
+//		dc.add(Restrictions.like("country", country+"%"));
+//		dc.add(Restrictions.like("phoneKind", phoneKind+"%"));
+//		dc.add(Restrictions.like("phoneNumber", phoneNumber+"%"));
+		@SuppressWarnings("unchecked")
+		List<Contact> l =getHibernateTemplate().findByCriteria(dc);
+		
+		/*
 		@SuppressWarnings("unchecked")
 		List<Contact> l = this.getHibernateTemplate().find(
 				"from Contact contact where contact.firstName = ?", firstName);
 		
 		System.out.println("l.size=" + l.size());
-
+		*/
 		if (l.size() != 0)
 			rvalue = ServerUtils.generateTable(l, "Contact table");
 		else

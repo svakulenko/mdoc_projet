@@ -59,6 +59,38 @@ public class ServerUtils {
 		generatedHtml += "</tr>";
 		return generatedHtml;
 	}
+	
+	static public String generateRowContactFullHeader() {
+		String generatedHtml = "";
+		generatedHtml += "<tr>";
+		generatedHtml += "<td style=\"width: 50px;\"  >" + "<B>ID</B>"         + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + "<B>First Name</B>" + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + "<B>Last Name</B>"  + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + "<B>Email</B>"      + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + "<B>Street</B>"      + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + "<B>City</B>"      + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + "<B>zip</B>"      + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + "<B>Country</B>"      + "</td>";
+		//generatedHtml += "<td style=\"width: 100px;\" >" + "PhoneKind"      + "</td>";
+		//generatedHtml += "<td style=\"width: 100px;\" >" + "PhoneNumber"    + "</td>";
+		generatedHtml += "</tr>";
+		return generatedHtml;
+	}
+	static public String generateRowContactFull(Contact c) {
+		
+		String generatedHtml = "";
+		generatedHtml += "<tr>";
+		generatedHtml += "<td valign=\"top\">" + c.getContactId() + "</td>";
+		generatedHtml += "<td valign=\"top\">" + c.getFirstName() + "</td>";
+		generatedHtml += "<td valign=\"top\">" + c.getLastName() + "</td>";
+		generatedHtml += "<td valign=\"top\">" + c.getEmail() + "</td>";
+		generatedHtml += "<td valign=\"top\">" + c.getAddress().getStreet() + "</td>";
+		generatedHtml += "<td valign=\"top\">" + c.getAddress().getCity() + "</td>";
+		generatedHtml += "<td valign=\"top\">" + c.getAddress().getZip() + "</td>";
+		generatedHtml += "<td valign=\"top\">" + c.getAddress().getCountry() + "</td>";
+		
+		return generatedHtml;
+	}
 	static public String generateRow(Contact c) {
 		
 		String generatedHtml = "";
@@ -151,10 +183,11 @@ static public String generateRow(Contact c,Address a, PhoneNumber p, ContactGrou
 			generatedHtml += "<table><tbody>";
 			//generatedHtml += "<TABLE BORDER=\"1\">";
 			generatedHtml += "<CAPTION><B>" + header + "</B> </CAPTION>";
-			generatedHtml += generateRow("<B>ID</B>", "<B>First Name</B>", "<B>Last Name</B>", "<B>Email</B>");
+			//generatedHtml += generateRow("<B>ID</B>", "<B>First Name</B>", "<B>Last Name</B>", "<B>Email</B>");
+			generatedHtml += generateRowContactFullHeader();
 			for (Contact c : lst) {
 				
-				generatedHtml += generateRow(c);
+				generatedHtml += generateRowContactFull(c);
 //				generatedHtml += generateRow("ID", ""+c.getId());
 //				generatedHtml += generateRow("FirstName", c.getFirstName());
 //				generatedHtml += generateRow("LastName ", c.getLastName());
