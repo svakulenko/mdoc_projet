@@ -302,12 +302,12 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 				.append(" left join contact.phoneNumbers as phoneNumber")
 				.append(" left join contact.contactgroup as contactGroup where contact.id="+id);
 		List<Object[]> l = getHibernateTemplate().find(requeteS.toString());
-		Contact contact = (Contact) l.get(0)[0];
-		if (contact == null)
+		if (l.size() == 0)
 		{
 			rvalue = "Contact dont exist!";
 			return rvalue;
 		}
+		Contact contact = (Contact) l.get(0)[0];	
 		if (firstName != null)
 			contact.setFirstName(firstName);
 		if (lastName != null)
