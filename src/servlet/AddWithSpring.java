@@ -61,8 +61,6 @@ public class AddWithSpring extends HttpServlet {
 		String responseUrl = "/addContactSpring.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
 		System.out.println("::doPost responseUrl=" + responseUrl);
 
-//		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );
-//		rd.forward(request, response);
 		response.sendRedirect(request.getContextPath() + responseUrl); 
 	}
 

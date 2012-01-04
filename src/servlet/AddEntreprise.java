@@ -58,8 +58,6 @@ public class AddEntreprise extends HttpServlet {
 				WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		IDAOEntreprise daoEntreprise = (IDAOEntreprise) appCtx.getBean("daoEntrepriseProperty");
 		
-		
-//		String dbOutput = daoEntreprise.addEntreprise(daoEntreprise.getEntreprise()); 
 		String dbOutput = daoEntreprise.addEntreprise(firstName, 
 				lastName, 
 				email, 

@@ -42,33 +42,12 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Login::doPost");
 		@SuppressWarnings("unchecked")
-//		Enumeration<String> prms = request.getParameterNames();
-//		if (prms.hasMoreElements()) {
-//			String prmName = (String) prms.nextElement();
-//			System.out.println("enum par name = " + prmName ); //why only password?
-//		}
 		
 	    String loginName = request.getParameter("username");
-		String password = request.getParameter("password");
-	
-
-			
-		
-//		System.out.println("user=" + loginName + 
-//				", pwd=" + password +
-//				", methode =" +request.getMethod() +
-//				", parametersNames=" );
-//		
-//		System.out.println("getServletContext().getContextPath()=" + getServletContext().getContextPath());
-		
+		String password = request.getParameter("password");	
 		
 		RequestDispatcher rd = null;
-		
-
-
 		String path = "";
-		//jsp variant
-		//on ajoute le parameter supplementaire pour g�n�rer dynamiquement link dans error page
 		String[] errorPage = {"indexPage", getServletContext().getContextPath() + "/index.html"};
 		String[] successPage = {"acceuil", getServletContext().getContextPath() + "/accueil.jsp"};
 		

@@ -64,17 +64,9 @@ public class UpdateContact extends HttpServlet {
 		String dbOutput = "";
 		IDAOContact daoContact = null;
 		IDAOEntreprise daoEntreprise = null;
-//		if (contactType.equals(ENTREPRISE))
-//		{
-//			// For testing purposes
-//			daoEntreprise = (IDAOEntreprise) appCtx.getBean("daoEntrepriseProperty");
-//			dbOutput = daoEntreprise.addEntreprise(daoEntreprise.getEntreprise());  //<-- Testing purpose
-//		}
-//		else 
-//		{		
-			daoContact = (IDAOContact) appCtx.getBean("daoContactProperty");
-			dbOutput = daoContact.updateContact(new Long(id), firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber);
-//		}
+
+		daoContact = (IDAOContact) appCtx.getBean("daoContactProperty");
+		dbOutput = daoContact.updateContact(new Long(id), firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber);
 		
 		
 		String responseUrl = "/updateContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);

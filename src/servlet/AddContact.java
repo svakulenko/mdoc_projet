@@ -63,7 +63,6 @@ public class AddContact extends HttpServlet
 				WebApplicationContextUtils.getWebApplicationContext(getServletContext());			
 			
 		IDAOContact daoContact = (IDAOContact) appCtx.getBean("daoContactProperty");
-//		String dbOutput = daoContact.addContact(daoContact.getContact());
 		
 		
 		String dbOutput = daoContact.addContact(firstName, 
