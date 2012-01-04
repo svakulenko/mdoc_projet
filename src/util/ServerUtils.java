@@ -256,11 +256,15 @@ public class ServerUtils {
 				ContactGroup contactGroup = (ContactGroup)objs[3];
 				generatedHtml += generateContactRow(contact, address, phoneNumber, contactGroup);
 				System.out.println();
+				if (hasContact == false)
+					hasContact = true;
 			}
 			generatedHtml += "</tbody></table>";
 			generatedHtml += "</div>";
 		}
 		System.out.println("gen html" + generatedHtml);
+		if (!hasContact)
+			generatedHtml = "";
 		return generatedHtml;
 	}
 	static public String generateEntrepriseTable(List<Object[]> list, String header) {

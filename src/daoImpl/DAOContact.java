@@ -296,24 +296,41 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 			String email, String street, String city, String zip,
 			String country, String phoneKind, String phoneNumber) {
 		String rvalue = null;
+		StringBuffer requeteS = new StringBuffer();
+		requeteS.append("from Contact contact")
+				.append(" left join contact.address as address")
+				.append(" left join contact.phoneNumbers as phoneNumber")
+				.append(" left join contact.contactgroup as contactGroup where contact.id="+id);
+		List<Object[]> l = getHibernateTemplate().find(requeteS.toString());
+		Contact contact = (Contact) l.get(0)[0];
+		if (contact == null)
+		{
+			rvalue = "Contact dont exist!";
+			return rvalue;
+		}
+		if (firstName != null)
+			contact.setFirstName(firstName);
+		if (lastName != null)
+			contact.setLastName(lastName);
+		if (email != null)
+			contact.setEmail(email);
 
-		Contact contact = new Contact();
-		contact.setContactId(id);
-		contact.setFirstName(firstName);
-		contact.setLastName(lastName);
-		contact.setEmail(email);
-
-		Address address = new Address();
-		address.setStreet(street);
-		address.setCity(city);
-		address.setZip(zip);
-		address.setCountry(country);
+		Address address = (Address) l.get(0)[1];
+		if (street != null)
+			address.setStreet(street);
+		if (city != null)
+			address.setCity(city);
+		if (zip != null)
+			address.setZip(zip);
+		if (country != null)
+			address.setCountry(country);
 		contact.setAddress(address); // Uni birectionnel
 
-		PhoneNumber phone = new PhoneNumber(phoneKind, phoneNumber);
-		contact.getPhoneNumbers().add(phone);
-		phone.setContact(contact);
-
+		PhoneNumber phone = (PhoneNumber) l.get(0)[2];
+		if (phoneKind != null)
+			phone.setPhoneKind(phoneKind);
+		if (phoneNumber != null)
+			phone.setPhoneNumber(phoneNumber);
 		getHibernateTemplate().saveOrUpdate(contact);
 		rvalue = ServerUtils.opFait;
 		return rvalue;

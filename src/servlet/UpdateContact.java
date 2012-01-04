@@ -45,7 +45,7 @@ public class UpdateContact extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String id = request.getParameter("id");
-		System.out.println("Updating contact" +  id + "....");
+		System.out.println("Updating contact " +  id + "....");
 		String firstName = request.getParameter("firstname");
 		String lastName = request.getParameter("lastname");
 		String email    = request.getParameter("email");
@@ -64,17 +64,17 @@ public class UpdateContact extends HttpServlet {
 		String dbOutput = "";
 		IDAOContact daoContact = null;
 		IDAOEntreprise daoEntreprise = null;
-		if (contactType.equals(ENTREPRISE))
-		{
-			// For testing purposes
-			daoEntreprise = (IDAOEntreprise) appCtx.getBean("daoEntrepriseProperty");
-			dbOutput = daoEntreprise.addEntreprise(daoEntreprise.getEntreprise());  //<-- Testing purpose
-		}
-		else 
-		{		
+//		if (contactType.equals(ENTREPRISE))
+//		{
+//			// For testing purposes
+//			daoEntreprise = (IDAOEntreprise) appCtx.getBean("daoEntrepriseProperty");
+//			dbOutput = daoEntreprise.addEntreprise(daoEntreprise.getEntreprise());  //<-- Testing purpose
+//		}
+//		else 
+//		{		
 			daoContact = (IDAOContact) appCtx.getBean("daoContactProperty");
 			dbOutput = daoContact.updateContact(new Long(id), firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber);
-		}
+//		}
 		
 		
 		String responseUrl = "/updateContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);

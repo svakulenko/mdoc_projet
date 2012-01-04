@@ -37,57 +37,57 @@
 			
 			<tr>
                 <td style="width: 140px;">Contact Id:</td>
-                <td valign="top"> <input type="text"  name="id" size="25"> </td>
+                <td valign="top"> <input type="text"  name="id" size="25" value="1" > </td>
             </tr>
 			
             <tr>
                 <td style="width: 140px;">First Name:</td>
-                <td valign="top"> <input type="text"  name="firstname" size="25"> </td>
+                <td valign="top"> <input type="text"  name="firstname" size="25" value="update"> </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">Last Name:</td>
-                <td valign="top"> <input type="text"  name="lastname" size="25"> </td>
+                <td valign="top"> <input type="text"  name="lastname" size="25" value="update"> </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">Email:</td>
-                <td valign="top"> <input type="text"  name="email" size="25" > </td>
+                <td valign="top"> <input type="text"  name="email" size="25" value="update"> </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*Street:</td>
-                <td valign="top"> <input type="text"  name="street" size="25"> </td>
+                <td valign="top"> <input type="text"  name="street" size="25" value="update"> </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*City:</td>
-                <td valign="top"> <input type="text"  name="city" size="25" > </td>
+                <td valign="top"> <input type="text"  name="city" size="25" value="update"> </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*Zip:</td>
-                <td valign="top"> <input type="text"  name="zip" size="25" > </td>
+                <td valign="top"> <input type="text"  name="zip" size="25" value="update"> </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*Country:</td>
-                <td valign="top"> <input type="text"  name="country" size="25"> </td>
+                <td valign="top"> <input type="text"  name="country" size="25" value="update"> </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*PhoneKind:</td>
-                <td valign="top"> <input type="text"  name="phonekind" size="25"> </td>
+                <td valign="top"> <input type="text"  name="phonekind" size="25" value="update"> </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*PhoneNumber:</td>
-                <td valign="top"> <input type="text"  name="phonenumber" size="25" > </td>
+                <td valign="top"> <input type="text"  name="phonenumber" size="25" value="update"> </td>
             </tr>
 
 			<tr id='tr1' style= 'display:none'>
                 <td style="width:140px">NumSiret:</td>
-                <td valign="top"> <input type="text"  name="numsiret" size="25"> </td>
+                <td valign="top"> <input type="text"  name="numsiret" size="25" value="update"> </td>
             </tr>
             
     </tbody></table>
