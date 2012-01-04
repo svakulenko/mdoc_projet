@@ -71,7 +71,7 @@ public class SearchContact extends HttpServlet {
 			System.out.println("entreprise");
 		}
 		else if (reqUrl.matches(".*SearchContact/ContactSimple")){
-			dbOutput = daoContact.searchContactSimple(id);
+//			dbOutput = daoContact.searchContactSimple(id);
 		}
 		else if (reqUrl.matches(".*SearchContact/EntrepriseCriteria")){
 			System.out.println("entreprise");

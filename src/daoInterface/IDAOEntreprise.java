@@ -26,7 +26,7 @@ public interface IDAOEntreprise
 		 );
 	public String searchEntreprise(long id);
 	public String deleteEntreprise(long id);
-	public Set<Entreprise> getAllEntreprise();
+	public String getAllEntreprise();
 }
 
 

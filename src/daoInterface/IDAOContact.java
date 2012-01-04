@@ -48,14 +48,3 @@ public interface IDAOContact {
 	public String deleteContact(long id);
 	public String getAllContacts();
 }
-/*
-String firstName = request.getParameter("firstname");
-		String lastName = request.getParameter("lastname");
-		String email    = request.getParameter("email");
-		String street = request.getParameter("street");	
-		String city = request.getParameter("city");
-		String zip = request.getParameter("zip");
-		String phoneKind = request.getParameter("phonekind");
-		String phoneNumber = request.getParameter("phoneNumber");
-		String numSiret = request.getParameter("numsiret");
-*/

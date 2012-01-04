@@ -14,6 +14,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import util.ServerUtils;
 
 import daoInterface.IDAOContact;
+import daoInterface.IDAOEntreprise;
 
 
 
@@ -42,6 +43,8 @@ public class ShowAllContact extends HttpServlet {
 		
 		//DAOContact daoContact = new DAOContact();
 		String dbOutput = daoContact.getAllContacts();
+		IDAOEntreprise daoEntreprise = (IDAOEntreprise) ac.getBean("daoEntrepriseProperty");
+		dbOutput += daoEntreprise.getAllEntreprise();
 		String responseUrl = "/" + "accueil.jsp" + ServerUtils.getNewParameter("dbOutputRaw", dbOutput);
 		
 		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );

@@ -120,9 +120,33 @@ public class DAOEntreprise extends HibernateDaoSupport implements IDAOEntreprise
 	}
 
 	@Override
-	public Set<Entreprise> getAllEntreprise() {
+	public String getAllEntreprise() {
 		// TODO Auto-generated method stub
-		return null;
+		String rvalue = null;
+
+		try {
+			@SuppressWarnings("unchecked")
+			Session sess = null;
+				
+			StringBuffer requeteS = new StringBuffer();
+			requeteS.append("from Entreprise entreprise")
+					.append(" left join entreprise.address as address")
+					.append(" left join entreprise.phoneNumbers as phoneNumber")
+					.append(" left join entreprise.contactgroup as contactGroup");
+			List<Object[]> l = getHibernateTemplate().find(requeteS.toString());
+//			 List<Contact> l = getHibernateTemplate().find("from Contact");
+			System.out.println("list ref=" + l);
+
+			if (l.size() == 0)
+				rvalue = ServerUtils.opNoRecods;
+			else
+				rvalue = ServerUtils.generateEntrepriseTable(l, "Entreprise table");
+
+		} catch (Exception e) {
+			rvalue = e.getMessage();
+		}
+
+		return rvalue;
 	}
 
 }
