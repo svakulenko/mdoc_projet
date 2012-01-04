@@ -159,7 +159,13 @@
 				and args(firstName,lastName,email,street,city,zip,country,phoneKind,phoneNumber)"
 					    method="validateBefore"
 						arg-names="firstName,lastName,email,street,city,zip,country,phoneKind,phoneNumber"/>
-		</aop:aspect>
+			<aop:after-returning pointcut="execution(* daoImpl.DAOContact.addContact(..))"
+					    method="validateAfterReturning"
+						/>
+			<aop:after-throwing pointcut="execution(* daoImpl.DAOContact.addContact(..))"
+					    method="validateAfterThrowing"
+						/>
+		</aop:aspect>		
 	</aop:config>
 	
 	

@@ -13,6 +13,7 @@ import domain.PhoneNumber;
 
 
 public class ServerUtils {
+	private static boolean hasContact = false;
 	private ServerUtils() {
 	}
 

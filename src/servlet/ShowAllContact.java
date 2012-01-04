@@ -44,6 +44,7 @@ public class ShowAllContact extends HttpServlet {
 		//DAOContact daoContact = new DAOContact();
 		String dbOutput = daoContact.getAllContacts();
 		IDAOEntreprise daoEntreprise = (IDAOEntreprise) ac.getBean("daoEntrepriseProperty");
+		dbOutput += "<p></p>";
 		dbOutput += daoEntreprise.getAllEntreprise();
 		String responseUrl = "/" + "accueil.jsp" + ServerUtils.getNewParameter("dbOutputRaw", dbOutput);
 		
