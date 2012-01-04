@@ -71,7 +71,7 @@ public class SearchContact extends HttpServlet {
 		if (reqUrl.matches(".*/ContactSimple")){
 			System.out.println(".*/ContactSimple");
 			dbOutput = daoContact.searchContactSimple(id);
-		}
+        }
 		else if (reqUrl.matches(".*/ContactCriteria")){
 			System.out.println(".*/ContactCriteria");
 			dbOutput = daoContact.searchContact(0, firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);

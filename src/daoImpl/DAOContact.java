@@ -243,31 +243,7 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 		try {
 			@SuppressWarnings("unchecked")
 			Session sess = null;
-//			try {
-//				SessionFactory fact = new Configuration().configure()
-//						.buildSessionFactory();
-//				sess = fact.openSession();
-//				StringBuffer requeteS = new StringBuffer();
-//				requeteS.append("from Contact contact")
-//						.append(" left join contact.address as address")
-//						.append(" left join contact.phoneNumbers as phoneNumber")
-//						.append(" left join contact.contactgroup as contactGroup");
-//				Query query = sess.createQuery(requeteS.toString());
-//				Iterator ite = query.list().iterator();
-////				while (ite.hasNext()) {
-////					Object[] list = (Object[]) ite.next();
-////					Contact contact = (Contact) list[0];
-////					Address address = (Address) list[1];
-////					PhoneNumber phoneNumber = (PhoneNumber)list[2];
-////					ContactGroup contactGroup = (ContactGroup)list[3];
-////					System.out.println();
-////				}
-//				rvalue = ServerUtils.generateTable(ite, "Contact table");
-//				sess.close();
-//			} catch (Exception e) {
-//				System.out.println(e.getMessage());
-//			}
-//					
+				
 			StringBuffer requeteS = new StringBuffer();
 			requeteS.append("from Contact contact")
 					.append(" left join contact.address as address")
@@ -280,7 +256,7 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 			if (l.size() == 0)
 				rvalue = ServerUtils.opNoRecods;
 			else
-				rvalue = ServerUtils.generateAllTable(l, "Contact table");
+				rvalue = ServerUtils.generateContactTable(l, "Contact table");
 
 		} catch (Exception e) {
 			rvalue = e.getMessage();
