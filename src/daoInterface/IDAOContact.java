@@ -44,6 +44,18 @@ public interface IDAOContact {
 			String phoneNumber,
 			String numSiret
 		 );
+	public String deleteContact(long id,
+			String firstName, 
+			String lastName,
+			String email,
+			String street,
+			String city,
+			String zip,
+			String country,
+			String phoneKind,
+			String phoneNumber,
+			String numSiret
+		 );
 	//public String searchContact(long id);
 	public String deleteContact(long id);
 	public String getAllContacts();

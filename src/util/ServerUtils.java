@@ -77,7 +77,23 @@ public class ServerUtils {
 		generatedHtml += "</tr>";
 		return generatedHtml;
 	}
-	
+	static public String generateRowEntrepriseFullHeader() {
+		String generatedHtml = "";
+		generatedHtml += "<tr>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + "numSiret"      + "</td>";
+		generatedHtml += "<td style=\"width: 50px;\"  >" + "<B>ID</B>"         + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + "<B>First Name</B>" + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + "<B>Last Name</B>"  + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + "<B>Email</B>"      + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + "<B>Street</B>"      + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + "<B>City</B>"      + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + "<B>zip</B>"      + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + "<B>Country</B>"      + "</td>";
+		//generatedHtml += "<td style=\"width: 100px;\" >" + "PhoneKind"      + "</td>";
+		//generatedHtml += "<td style=\"width: 100px;\" >" + "PhoneNumber"    + "</td>";
+		generatedHtml += "</tr>";
+		return generatedHtml;
+	}
 	static public String generateRowContactFullHeader() {
 		String generatedHtml = "";
 		generatedHtml += "<tr>";
@@ -92,6 +108,22 @@ public class ServerUtils {
 		//generatedHtml += "<td style=\"width: 100px;\" >" + "PhoneKind"      + "</td>";
 		//generatedHtml += "<td style=\"width: 100px;\" >" + "PhoneNumber"    + "</td>";
 		generatedHtml += "</tr>";
+		return generatedHtml;
+	}
+	static public String generateRowEntrepriseFull(Entreprise c) {
+		
+		String generatedHtml = "";
+		generatedHtml += "<tr>";
+		generatedHtml += "<td valign=\"top\">" + c.getNumSiret() + "</td>";
+		generatedHtml += "<td valign=\"top\">" + c.getContactId() + "</td>";
+		generatedHtml += "<td valign=\"top\">" + c.getFirstName() + "</td>";
+		generatedHtml += "<td valign=\"top\">" + c.getLastName() + "</td>";
+		generatedHtml += "<td valign=\"top\">" + c.getEmail() + "</td>";
+		generatedHtml += "<td valign=\"top\">" + c.getAddress().getStreet() + "</td>";
+		generatedHtml += "<td valign=\"top\">" + c.getAddress().getCity() + "</td>";
+		generatedHtml += "<td valign=\"top\">" + c.getAddress().getZip() + "</td>";
+		generatedHtml += "<td valign=\"top\">" + c.getAddress().getCountry() + "</td>";
+		
 		return generatedHtml;
 	}
 	static public String generateRowContactFull(Contact c) {
@@ -256,6 +288,26 @@ public class ServerUtils {
 		System.out.println("gen html" + generatedHtml);
 		return generatedHtml;
 	}
+	static public String generateTableEntreprise(List<Entreprise> lst, String header) {
+		String generatedHtml = "";
+		if (lst.size() != 0) {
+
+			generatedHtml += "<div align=\"center\">";
+			generatedHtml += "<br><br>";
+			generatedHtml += "<table><tbody>";
+			//generatedHtml += "<TABLE BORDER=\"1\">";
+			generatedHtml += "<CAPTION><B>" + header + "</B> </CAPTION>";
+			//generatedHtml += generateRow("<B>ID</B>", "<B>First Name</B>", "<B>Last Name</B>", "<B>Email</B>");
+			generatedHtml += generateRowEntrepriseFullHeader();
+			for (Entreprise e : lst) {
+				generatedHtml += generateRowEntrepriseFull(e);
+			}
+			generatedHtml += "</tbody></table>";
+			generatedHtml += "</div>";
+		}
+		System.out.println("gen html" + generatedHtml);
+		return generatedHtml;
+	}
 	static public String generateTable(List<Contact> lst, String header) {
 		String generatedHtml = "";
 		if (lst.size() != 0) {
@@ -268,12 +320,7 @@ public class ServerUtils {
 			//generatedHtml += generateRow("<B>ID</B>", "<B>First Name</B>", "<B>Last Name</B>", "<B>Email</B>");
 			generatedHtml += generateRowContactFullHeader();
 			for (Contact c : lst) {
-				
 				generatedHtml += generateRowContactFull(c);
-//				generatedHtml += generateRow("ID", ""+c.getId());
-//				generatedHtml += generateRow("FirstName", c.getFirstName());
-//				generatedHtml += generateRow("LastName ", c.getLastName());
-//				generatedHtml += generateRow("Email ", c.getEmail());
 			}
 			generatedHtml += "</tbody></table>";
 			generatedHtml += "</div>";

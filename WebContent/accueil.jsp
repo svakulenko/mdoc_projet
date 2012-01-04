@@ -25,7 +25,7 @@
 <a href="ShowAllContact">showTable</a><br>
   </div>
   
-  <div class="mainBody">
+  <div class="mainBody" style="overflow:auto">
   <jsp:include page="/commonPages/dbdataOutput.jsp" /><br>
   </div>
   

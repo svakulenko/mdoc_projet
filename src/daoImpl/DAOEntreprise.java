@@ -4,9 +4,13 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Set;
 
+import org.hibernate.FetchMode;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -72,6 +76,102 @@ public class DAOEntreprise extends HibernateDaoSupport implements IDAOEntreprise
 		return rvalue;
 	}
 	
+	public String deleteEntreprise(long id,
+			String firstName, 
+			String lastName,
+			String email,
+			String street,
+			String city,
+			String zip,
+			String country,
+			String phoneKind,
+			String phoneNumber,
+			String numSiret
+		 )
+	{
+		System.out.println("::hSearchContact start id=" + id);
+		String rvalue = null;
+
+		
+		DetachedCriteria dc = DetachedCriteria.forClass(Contact.class)
+				.setFetchMode("address", FetchMode.JOIN)
+				.createAlias("address","a")
+				.add(Restrictions.like("firstName", firstName+"%"))
+				.add(Restrictions.like("lastName", lastName+"%"))
+				.add(Restrictions.like("email", email+"%"))
+				.add(Restrictions.like("a.street", street+"%"))
+				.add(Restrictions.like("a.city", city+"%"))
+				.add(Restrictions.like("a.zip", zip+"%"))
+				.add(Restrictions.like("a.country", country+"%"))
+				;;
+				@SuppressWarnings("unchecked")
+				List<Contact> l =getHibernateTemplate().findByCriteria(dc);
+				for (Contact o : l)
+				getHibernateTemplate().delete(o);
+
+		
+		
+
+			rvalue = ServerUtils.opTableRemoved;
+
+		return rvalue;
+		
+	}
+	public String searchEntreprise(long id,
+			String firstName, 
+			String lastName,
+			String email,
+			String street,
+			String city,
+			String zip,
+			String country,
+			String phoneKind,
+			String phoneNumber,
+			String numSiret
+		 )
+	{
+
+		System.out.println("::searchEntreprise start numSiret=" + numSiret);
+		
+		Long numSiretLong = null;
+		try {
+			numSiretLong = new Long(numSiret);
+		}
+		catch (Exception e){}
+
+		
+		String rvalue = null;
+
+		
+		DetachedCriteria dc = DetachedCriteria.forClass(Entreprise.class)
+				.setFetchMode("address", FetchMode.JOIN)
+				.createAlias("address","a")
+				
+				.add(Restrictions.like("firstName", firstName+"%"))
+				.add(Restrictions.like("lastName", lastName+"%"))
+				.add(Restrictions.like("email", email+"%"))
+				.add(Restrictions.like("a.street", street+"%"))
+				.add(Restrictions.like("a.city", city+"%"))
+				.add(Restrictions.like("a.zip", zip+"%"))
+				.add(Restrictions.like("a.country", country+"%"))
+				;;
+				
+				if (numSiretLong != null)
+					dc = dc.add(Restrictions.like("numSiret", numSiretLong));
+				
+				
+
+		@SuppressWarnings("unchecked")
+		List<Contact> l = getHibernateTemplate().findByCriteria(dc);
+		
+		if (l.size() != 0)
+			rvalue = ServerUtils.generateTable(l, "Entreprise table");
+		else
+			rvalue = ServerUtils.opNoRecods;
+
+		return rvalue;
+	}
+	
 	@Override
 	public String searchEntreprise(long id) {
 		// TODO Auto-generated method stub
@@ -84,7 +184,7 @@ public class DAOEntreprise extends HibernateDaoSupport implements IDAOEntreprise
 		System.out.println("l.size=" + l.size());
 
 		if (l.size() != 0)
-			rvalue = ServerUtils.generateTable(l, "Contact table");
+			rvalue = ServerUtils.generateTable(l, "Entreprise table");
 		else
 			rvalue = ServerUtils.opNoRecods;
 

@@ -65,7 +65,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>RemoveContact</servlet-name>
-    <url-pattern>/RemoveContact</url-pattern>
+    <url-pattern>/RemoveContact/*</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>

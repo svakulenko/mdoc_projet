@@ -49,39 +49,8 @@
 </form> 
 
 
-<div id='div2' style='display:none'>
-<form name="myForm" method="post" action="SearchContact/EntrepriseSimple" onsubmit="">
-    <br/>
-    <input type="submit" value="Search"> 
-    <input type="reset"  value="Clear">
-    <label for="lab">Simple search</label>
-    
-    <table><tbody>
-            <tr>
-                <td style="width: 140px;">ID:</td>
-                <td valign="top"> <input type="text"  name="id" size="25" value="" > </td>
-            </tr>
-    </tbody></table>
-</form>
-
-</div>
-<div id='div1' style='display:block'>
-<form name="myForm" method="post" action="SearchContact/ContactSimple" onsubmit="">
-    <br/>
-    <input type="submit" value="Search"> 
-    <input type="reset"  value="Clear">
-    <label for="lab">Simple search</label>
-
-    <table><tbody>
-            <tr>
-                <td style="width: 140px;">ID:</td>
-                <td valign="top"> <input type="text"  name="id" size="25" value=""> </td>
-            </tr>
-    </tbody></table>
-</form>
 
 
-</div>
 
 <div id='div2' style='display:none'>
 <form name="myForm" method="post" action="SearchContact/EntrepriseCriteria" onsubmit="">
@@ -93,10 +62,7 @@
 	
 
     <table><tbody>
-            <tr>
-                <td style="width: 140px;">NumSiret:</td>
-                <td valign="top"> <input type="text"  name="numsiret" size="25" value="" > </td>
-            </tr>
+
 
             <tr>
                 <td style="width: 140px;">First Name:</td>
@@ -132,15 +98,9 @@
                 <td style="width: 140px;">*Country:</td>
                 <td valign="top"> <input type="text"  name="country" size="25" value="" > </td>
             </tr>
-
             <tr>
-                <td style="width: 140px;">*PhoneKind:</td>
-                <td valign="top"> <input type="text"  name="phonekind" size="25" value="" > </td>
-            </tr>
-
-            <tr>
-                <td style="width: 140px;">*PhoneNumber:</td>
-                <td valign="top"> <input type="text"  name="phonenumber" size="25" value="" > </td>
+                <td style="width: 140px;">NumSiret:</td>
+                <td valign="top"> <input type="text"  name="numsiret" size="25" value="" > </td>
             </tr>
 
     </tbody></table>
@@ -191,15 +151,6 @@
                 <td valign="top"> <input type="text"  name="country" size="25" value="" > </td>
             </tr>
 
-            <tr>
-                <td style="width: 140px;">*PhoneKind:</td>
-                <td valign="top"> <input type="text"  name="phonekind" size="25" value="" > </td>
-            </tr>
-
-            <tr>
-                <td style="width: 140px;">*PhoneNumber:</td>
-                <td valign="top"> <input type="text"  name="phonenumber" size="25" value="" > </td>
-            </tr>
 
     </tbody></table>
 </form>
