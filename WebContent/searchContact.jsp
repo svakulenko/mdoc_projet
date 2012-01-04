@@ -49,36 +49,6 @@
 </form> 
 
 
-<div id='div2' style='display:none'>
-<form name="myForm" method="post" action="SearchContact/EntrepriseSimple" onsubmit="">
-    <br/>
-    <input type="submit" value="Search"> 
-    <input type="reset"  value="Clear">
-    <label for="lab">Simple search</label>
-    
-    <table><tbody>
-            <tr>
-                <td style="width: 140px;">ID:</td>
-                <td valign="top"> <input type="text"  name="id" size="25" value="" > </td>
-            </tr>
-    </tbody></table>
-</form>
-
-</div>
-<div id='div1' style='display:block'>
-<form name="myForm" method="post" action="SearchContact/ContactSimple" onsubmit="">
-    <br/>
-    <input type="submit" value="Search"> 
-    <input type="reset"  value="Clear">
-    <label for="lab">Simple search</label>
-
-    <table><tbody>
-            <tr>
-                <td style="width: 140px;">ID:</td>
-                <td valign="top"> <input type="text"  name="id" size="25" value=""> </td>
-            </tr>
-    </tbody></table>
-</form>
 
 
 </div>

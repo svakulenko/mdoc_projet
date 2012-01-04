@@ -132,18 +132,25 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 
 	//
 	public String searchContactSimple(final String id) {
+		System.out.println("searchContactSimple");
 		String rvalue = null;
+		
 		@SuppressWarnings("unchecked")
 		List<Contact> l = this.getHibernateTemplate().find(
 				"from Contact contact where contact.id = ?", new Long(id));
 		
 		System.out.println("l.size=" + l.size());
 
+
+			
+		
+		System.out.println("ret value31");
 		if (l.size() != 0)
 			rvalue = ServerUtils.generateTable(l, "Contact table");
 		else
 			rvalue = ServerUtils.opNoRecods;
 
+		System.out.println("ret value");
 		return rvalue;
 	}
 	public String searchContact(long id,
