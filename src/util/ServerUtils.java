@@ -248,6 +248,8 @@ public class ServerUtils {
 			for (Object[] objs: list)
 			{
 				Contact contact = (Contact) objs[0];
+				if (contact instanceof Entreprise)
+					continue;
 				Address address = (Address) objs[1];
 				PhoneNumber phoneNumber = (PhoneNumber)objs[2];
 				ContactGroup contactGroup = (ContactGroup)objs[3];
