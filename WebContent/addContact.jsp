@@ -73,7 +73,7 @@
 
             <tr>
                 <td style="width: 140px;">*Street:</td>
-                <td valign="top"> <input type="text"  name="street" size="25" value="email value " > </td>
+                <td valign="top"> <input type="text"  name="street" size="25" value="street value " > </td>
             </tr>
 
             <tr>
@@ -83,7 +83,7 @@
 
             <tr>
                 <td style="width: 140px;">*zip:</td>
-                <td valign="top"> <input type="text"  name="zip" size="25" value="email value " > </td>
+                <td valign="top"> <input type="text"  name="zip" size="25" value="zip value " > </td>
             </tr>
 
             <tr>
@@ -98,9 +98,14 @@
 
             <tr>
                 <td style="width: 140px;">*PhoneNumber:</td>
-                <td valign="top"> <input type="text"  name="phonenumber" size="25" value="010203040506 " > </td>
+                <td valign="top"> <input type="text"  name="phoneNumber" size="25" value="123 " > </td>
             </tr>
 
+
+			<tr>
+                <td style="width: 140px;">*GroupName:</td>
+                <td valign="top"> <input type="text"  name="groupName" size="25" value="Groupe " > </td>
+            </tr>
     </tbody></table>
 </form>
 
@@ -128,7 +133,7 @@
 
             <tr>
                 <td style="width: 140px;">*Street:</td>
-                <td valign="top"> <input type="text"  name="street" size="25" value="email value " > </td>
+                <td valign="top"> <input type="text"  name="street" size="25" value="street value " > </td>
             </tr>
 
             <tr>
@@ -138,7 +143,7 @@
 
             <tr>
                 <td style="width: 140px;">*zip:</td>
-                <td valign="top"> <input type="text"  name="zip" size="25" value="email value " > </td>
+                <td valign="top"> <input type="text"  name="zip" size="25" value="zip value " > </td>
             </tr>
 
             <tr>
@@ -153,9 +158,14 @@
 
             <tr>
                 <td style="width: 140px;">*PhoneNumber:</td>
-                <td valign="top"> <input type="text"  name="phonenumber" size="25" value="010203040506 " > </td>
+                <td valign="top"> <input type="text"  name="phoneNumber" size="25" value="456 " > </td>
             </tr>
 
+
+			<tr>
+                <td style="width: 140px;">*GroupName:</td>
+                <td valign="top"> <input type="text"  name="groupName" size="25" value="Groupe " > </td>
+            </tr>
     </tbody></table>
 </form>
 

@@ -22,7 +22,8 @@ public interface IDAOEntreprise
 			String country,
 			String phoneKind,
 			String phoneNumber,
-			long siretNumber
+			long siretNumber,
+			String group
 		 );
 	public String searchEntreprise(long id);
 	public String deleteEntreprise(long id);

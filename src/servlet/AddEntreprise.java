@@ -53,7 +53,7 @@ public class AddEntreprise extends HttpServlet {
 		String phoneKind = request.getParameter("phonekind");
 		String phoneNumber = request.getParameter("phoneNumber");
 		String numSiret = request.getParameter("numsiret");
-		
+		String group = request.getParameter("groupName");
 		ApplicationContext  appCtx =	
 				WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		IDAOEntreprise daoEntreprise = (IDAOEntreprise) appCtx.getBean("daoEntrepriseProperty");
@@ -69,7 +69,8 @@ public class AddEntreprise extends HttpServlet {
 				country, 
 				phoneKind, 
 				phoneNumber,
-				new Long(numSiret));
+				new Long(numSiret),
+				group);
 		String responseUrl = "/addContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
 		System.out.println("::doPost responseUrl=" + responseUrl);
 

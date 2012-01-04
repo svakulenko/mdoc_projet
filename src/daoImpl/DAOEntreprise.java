@@ -19,6 +19,7 @@ import util.ServerUtils;
 import daoInterface.IDAOEntreprise;
 import domain.Address;
 import domain.Contact;
+import domain.ContactGroup;
 import domain.Entreprise;
 import domain.PhoneNumber;
 
@@ -50,7 +51,7 @@ public class DAOEntreprise extends HibernateDaoSupport implements IDAOEntreprise
 	public String addEntreprise(String firstName, String lastName,
 			String email, String street, String city, String zip,
 			String country, String phoneKind, String phoneNumber,
-			long siretNumber) {
+			long siretNumber,String group) {
 		// TODO Auto-generated method stub
 		String rvalue = null;
 
@@ -67,9 +68,16 @@ public class DAOEntreprise extends HibernateDaoSupport implements IDAOEntreprise
 		address.setCountry(country);
 		entreprise.setAddress(address); // Uni birectionnel
 		
-		PhoneNumber phone = new PhoneNumber(phoneKind, phoneNumber);
+		PhoneNumber phone = new PhoneNumber();
+		phone.setPhoneKind(phoneKind);
+		phone.setPhoneNumber(phoneNumber);
 		entreprise.getPhoneNumbers().add(phone);
 		phone.setContact(entreprise);
+		
+		ContactGroup contactGroup = new ContactGroup();
+		contactGroup.setGroupName(group);
+		entreprise.getContactgroup().add(contactGroup);
+		contactGroup.getContacts().add(entreprise);
 		
 		getHibernateTemplate().save(entreprise);
 		rvalue = ServerUtils.opFait;

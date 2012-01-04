@@ -15,7 +15,8 @@ public interface IDAOContact {
 								String zip,
 								String country,
 								String phoneKind,
-								String phoneNumber
+								String phoneNumber,
+								String group
 							 );
 	public String addContact(String firstName,String lastName);
 	// Used by Spring framework

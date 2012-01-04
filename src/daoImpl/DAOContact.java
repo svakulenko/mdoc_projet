@@ -89,7 +89,7 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 
 	public String addContact(String firstName, String lastName, String email,
 			String street, String city, String zip, String country,
-			String phoneKind, String phoneNumber) {
+			String phoneKind, String phoneNumber,String group) {
 		String rvalue = null;
 
 		Contact contact = new Contact();
@@ -104,10 +104,18 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 		address.setCountry(country);
 		contact.setAddress(address); // Uni birectionnel
 
-		PhoneNumber phone = new PhoneNumber(phoneKind, phoneNumber);
+		PhoneNumber phone = new PhoneNumber();
+		phone.setPhoneKind(phoneKind);
+		phone.setPhoneNumber(phoneNumber);
 		contact.getPhoneNumbers().add(phone);
 		phone.setContact(contact);
 
+		
+		ContactGroup contactGroup = new ContactGroup();
+		contactGroup.setGroupName(group);
+		contact.getContactgroup().add(contactGroup);
+		contactGroup.getContacts().add(contact);
+		
 		getHibernateTemplate().save(contact);
 		rvalue = ServerUtils.opFait;
 		return rvalue;
