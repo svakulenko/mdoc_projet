@@ -54,7 +54,7 @@
     <br/>
     <input type="submit" value="Search"> 
     <input type="reset"  value="Clear">
-    <label for="lab">Simple search (find with ?)</label>
+    <label for="lab">Simple search</label>
     
     <table><tbody>
             <tr>
@@ -70,7 +70,7 @@
     <br/>
     <input type="submit" value="Search"> 
     <input type="reset"  value="Clear">
-    <label for="lab">Simple search (find with ?)</label>
+    <label for="lab">Simple search</label>
 
     <table><tbody>
             <tr>
@@ -88,7 +88,7 @@
     <br/>
     <input type="submit" value="Search"> 
     <input type="reset"  value="Clear">
-    <label for="lab">Simple search (find by Criteria)</label>
+    <label for="lab">search by Criteria (with like)</label>
 
 	
 
@@ -152,7 +152,7 @@
     <br/>
     <input type="submit" value="Search"> 
     <input type="reset"  value="Clear">
-    <label for="lab">Simple search (find by Criteria)</label>
+    <label for="lab">search by Criteria (with like)</label>
 
     <table><tbody>
 
