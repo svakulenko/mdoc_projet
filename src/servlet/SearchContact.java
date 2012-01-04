@@ -16,6 +16,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import util.ServerUtils;
 
 import daoInterface.IDAOContact;
+import daoInterface.IDAOEntreprise;
 import util.*;
 
 /**
@@ -64,24 +65,18 @@ public class SearchContact extends HttpServlet {
 		
 		ApplicationContext  ac =	WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		IDAOContact daoContact = (IDAOContact) ac.getBean("daoContactProperty");
+		IDAOEntreprise daoEntreprise = (IDAOEntreprise) ac.getBean("daoEntrepriseProperty");
 		
 		
 		String dbOutput = null;
 
-		if (reqUrl.matches(".*/ContactSimple")){
-			System.out.println(".*/ContactSimple");
-			dbOutput = daoContact.searchContactSimple(id);
-        }
-		else if (reqUrl.matches(".*/ContactCriteria")){
+		if (reqUrl.matches(".*/ContactCriteria")){
 			System.out.println(".*/ContactCriteria");
 			dbOutput = daoContact.searchContact(0, firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);
 		}
-		else if (reqUrl.matches(".*/EntrepriseSimple")){
-			System.out.println(".*/EntrepriseSimple");
-			System.out.println("entreprise");
-		}
 		else if (reqUrl.matches(".*/EntrepriseCriteria")){
 			System.out.println(".*/EntrepriseCriteria");
+			dbOutput = daoEntreprise.searchEntreprise(0, firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);
 		}
 		else
 			System.out.println("no of if/else of criteria, warning");
@@ -92,10 +87,6 @@ public class SearchContact extends HttpServlet {
 		String responseUrl = "/" + "accueil.jsp" + ServerUtils.getNewParameter("dbOutputRaw", dbOutput);
 		System.out.println("::doPost responseUrl=" + responseUrl);
 
-		
-		//RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );
-		//rd.forward(request, response);
-	
 		response.sendRedirect(request.getContextPath() + responseUrl); 
 
 		

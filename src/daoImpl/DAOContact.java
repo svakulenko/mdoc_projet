@@ -153,6 +153,47 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 		System.out.println("ret value");
 		return rvalue;
 	}
+	public String deleteContact(long id,
+			String firstName, 
+			String lastName,
+			String email,
+			String street,
+			String city,
+			String zip,
+			String country,
+			String phoneKind,
+			String phoneNumber,
+			String numSiret
+		 )
+	{
+		System.out.println("::hSearchContact start id=" + id);
+		String rvalue = null;
+
+		
+		DetachedCriteria dc = DetachedCriteria.forClass(Contact.class)
+				.setFetchMode("address", FetchMode.JOIN)
+				.createAlias("address","a")
+				.add(Restrictions.like("firstName", firstName+"%"))
+				.add(Restrictions.like("lastName", lastName+"%"))
+				.add(Restrictions.like("email", email+"%"))
+				.add(Restrictions.like("a.street", street+"%"))
+				.add(Restrictions.like("a.city", city+"%"))
+				.add(Restrictions.like("a.zip", zip+"%"))
+				.add(Restrictions.like("a.country", country+"%"))
+				;;
+				@SuppressWarnings("unchecked")
+				List<Contact> l =getHibernateTemplate().findByCriteria(dc);
+				for (Contact o : l)
+				getHibernateTemplate().delete(o);
+
+		
+		
+
+			rvalue = ServerUtils.opTableRemoved;
+
+		return rvalue;
+		
+	}
 	public String searchContact(long id,
 			String firstName, 
 			String lastName,
@@ -180,26 +221,10 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 				.add(Restrictions.like("a.zip", zip+"%"))
 				.add(Restrictions.like("a.country", country+"%"))
 				;;
-								
 
-		;
-		
-
-		
-//		dc.add(Restrictions.like("zip", zip+"%"));
-//		dc.add(Restrictions.like("country", country+"%"));
-//		dc.add(Restrictions.like("phoneKind", phoneKind+"%"));
-//		dc.add(Restrictions.like("phoneNumber", phoneNumber+"%"));
 		@SuppressWarnings("unchecked")
 		List<Contact> l =getHibernateTemplate().findByCriteria(dc);
 		
-		/*
-		@SuppressWarnings("unchecked")
-		List<Contact> l = this.getHibernateTemplate().find(
-				"from Contact contact where contact.firstName = ?", firstName);
-		
-		System.out.println("l.size=" + l.size());
-		*/
 		if (l.size() != 0)
 			rvalue = ServerUtils.generateTable(l, "Contact table");
 		else
