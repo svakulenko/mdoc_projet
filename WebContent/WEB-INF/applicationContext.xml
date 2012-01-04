@@ -15,7 +15,7 @@
 	<!-- MAIN BEANS  START -->
 	<!-- BEAN FOR CONTACT -->
 	<bean id="homenumberContact" class="domain.PhoneNumber">
-		<property name="phoneKind" value="home"/>
+		<property name="phoneKind" value="HomePhone"/>
 		<property name="phoneNumber" value="99999"/>
 		<property name="contact" ref="contact"/>
 
@@ -23,22 +23,22 @@
 
 
 	<bean id="mobilenumberContact" class="domain.PhoneNumber">
-		<property name="phoneKind" value="mobile"/>
+		<property name="phoneKind" value="Mobile"/>
 		<property name="phoneNumber" value="88888"/>
 		<property name="contact" ref="contact"/>
 	</bean>			
 
-	<bean id="address" class="domain.Address">
-		<property name="street" value="rue address"/>
-		<property name="city" value="city address"/>
+	<bean id="addressContact" class="domain.Address">
+		<property name="street" value="Boulevard"/>
+		<property name="city" value="Paris"/>
 		<property name="zip" value="75000"/>
 		<property name="country" value="France"/>
 		<!-- <property name="contact" ref="contact"/>
 		-->
 	</bean>
-
+	
 	<bean id="contactgroupContact" class="domain.ContactGroup">
-		<property name="groupName" value="Default Name"/>
+		<property name="groupName" value="Buddy"/>
 		<property name="contacts">
 			<set>
 				<ref bean="contact"/>
@@ -48,10 +48,10 @@
 	
 
 	<bean id="contact" class="domain.Contact">
-		<property name="email" value="spring@gmail.com"/>
-		<property name="firstName" value="Contact First"/>
-		<property name="lastName"  value="Contact Last"/>
-		<property name="address" 	   ref="address"/>
+		<property name="email" value="springContact@gmail.com"/>
+		<property name="firstName" value="Toto"/>
+		<property name="lastName"  value="Tata"/>
+		<property name="address" 	   ref="addressContact"/>
 		<property name="phoneNumbers">
 			<set>
 				<ref bean="homenumberContact"/>
@@ -67,22 +67,30 @@
 	
 	<!-- BEANs for entreprise -->
 	<bean id="homenumberEntreprise" class="domain.PhoneNumber">
-		<property name="phoneKind" value="home"/>
-		<property name="phoneNumber" value="99999"/>
+		<property name="phoneKind" value="HomePhone"/>
+		<property name="phoneNumber" value="1111"/>
 		<property name="contact" ref="entreprise"/>
 
 	</bean>
 
-
+		<bean id="addressEntreprise" class="domain.Address">
+		<property name="street" value="Gentilly"/>
+		<property name="city" value="Paris"/>
+		<property name="zip" value="75000"/>
+		<property name="country" value="France"/>
+		<!-- <property name="contact" ref="contact"/>
+		-->
+	</bean>
+	
 	<bean id="mobilenumberEntreprise" class="domain.PhoneNumber">
-		<property name="phoneKind" value="mobile"/>
-		<property name="phoneNumber" value="88888"/>
+		<property name="phoneKind" value="CellPhone"/>
+		<property name="phoneNumber" value="2222"/>
 		<property name="contact" ref="entreprise"/>
 	</bean>
 			
 
 	<bean id="contactgroupEntreprise" class="domain.ContactGroup">
-		<property name="groupName" value="Default Name"/>
+		<property name="groupName" value="Entreprise"/>
 		<property name="contacts">
 			<set>
 				<ref bean="entreprise"/>
@@ -93,10 +101,10 @@
 	
 	<bean id="entreprise" class="domain.Entreprise">
 		<property name="numSiret" value="1111111" />
-		<property name="email" value="spring@gmail.com"/>
-		<property name="firstName" value="Entreprise First"/>
-		<property name="lastName"  value="Entreprise Last"/>
-		<property name="address" 	   ref="address"/>
+		<property name="email" value="springEntreprise@gmail.com"/>
+		<property name="firstName" value="Tom"/>
+		<property name="lastName"  value="Jerry"/>
+		<property name="address" 	   ref="addressEntreprise"/>
 		<property name="phoneNumbers">
 			<set>
 				<ref bean="homenumberEntreprise"/>

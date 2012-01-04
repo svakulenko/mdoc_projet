@@ -14,7 +14,7 @@
 
  
  
-<h1>add contact input form:</h1>
+<h1>Add contact input form:</h1>
 <jsp:include page="/commonPages/dbdataOutput.jsp" />
 
 <script>
@@ -164,7 +164,7 @@
 
 			<tr>
                 <td style="width: 140px;">*GroupName:</td>
-                <td valign="top"> <input type="text"  name="groupName" size="25" value="Entreprise " > </td>
+                <td valign="top"> <input type="text"  name="groupName" size="25" value="Entreprise" > </td>
             </tr>
     </tbody></table>
 </form>

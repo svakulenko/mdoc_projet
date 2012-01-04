@@ -95,4 +95,14 @@
     <servlet-name>AddEntreprise</servlet-name>
     <url-pattern>/AddEntreprise</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddWithSpring</display-name>
+    <servlet-name>AddWithSpring</servlet-name>
+    <servlet-class>servlet.AddWithSpring</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddWithSpring</servlet-name>
+    <url-pattern>/AddWithSpring/*</url-pattern>
+  </servlet-mapping>
 </web-app>

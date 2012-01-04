@@ -111,12 +111,32 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 		phone.setContact(contact);
 
 		
-		ContactGroup contactGroup = new ContactGroup();
+		String query = "from ContactGroup contactGroup";
+		List<ContactGroup> l = getHibernateTemplate().find(query);
+		Iterator<ContactGroup> ite = l.iterator();
+		ContactGroup contactGroup = null;
+		
+		while (ite.hasNext())
+		{
+			contactGroup = ite.next();
+			if (contactGroup.getGroupName().equals(group))
+			{
+				contact.getContactgroup().add(contactGroup);
+				contactGroup.getContacts().add(contact);
+				getHibernateTemplate().saveOrUpdate(contact);
+				
+				rvalue = ServerUtils.opFait;
+				return rvalue;
+			}
+		}
+		
+		// If new contact Group
+		contactGroup = new ContactGroup();
 		contactGroup.setGroupName(group);
 		contact.getContactgroup().add(contactGroup);
 		contactGroup.getContacts().add(contact);
 		
-		getHibernateTemplate().save(contact);
+		getHibernateTemplate().saveOrUpdate(contact);
 		rvalue = ServerUtils.opFait;
 		return rvalue;
 

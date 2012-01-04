@@ -1,6 +1,7 @@
 package daoImpl;
 
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -74,12 +75,30 @@ public class DAOEntreprise extends HibernateDaoSupport implements IDAOEntreprise
 		entreprise.getPhoneNumbers().add(phone);
 		phone.setContact(entreprise);
 		
-		ContactGroup contactGroup = new ContactGroup();
+		String query = "from ContactGroup contactGroup";
+		List<ContactGroup> l = getHibernateTemplate().find(query);
+		Iterator<ContactGroup> ite = l.iterator();
+		ContactGroup contactGroup = null;
+		while (ite.hasNext())
+		{
+			contactGroup = ite.next();
+			if (contactGroup.getGroupName().equals(group))
+			{
+				entreprise.getContactgroup().add(contactGroup);
+				contactGroup.getContacts().add(entreprise);
+				getHibernateTemplate().saveOrUpdate(entreprise);
+				rvalue = ServerUtils.opFait;
+				return rvalue;
+			}
+		}
+		
+		// If new contact Group
+		contactGroup = new ContactGroup();
 		contactGroup.setGroupName(group);
 		entreprise.getContactgroup().add(contactGroup);
 		contactGroup.getContacts().add(entreprise);
 		
-		getHibernateTemplate().save(entreprise);
+		getHibernateTemplate().saveOrUpdate(entreprise);
 		rvalue = ServerUtils.opFait;
 		return rvalue;
 	}

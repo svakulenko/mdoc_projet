@@ -17,12 +17,13 @@
   </div>
   
   <div class="sidebar">
-<a href="addContact.jsp">add contact</a><br>
-<a href="removeContact.jsp">remove contact</a><br>
-<a href="searchContact.jsp">search contact</a><br>
-<a href="updateContact.jsp">update contact</a><br>
-<a href="ClearTable">clear table</a><br>
-<a href="ShowAllContact">showTable</a><br>
+<a href="addContact.jsp">Add contact</a><br>
+<a href="removeContact.jsp">Remove contact</a><br>
+<a href="searchContact.jsp">Search contact</a><br>
+<a href="updateContact.jsp">Update contact</a><br>
+<a href="ClearTable">Clear table</a><br>
+<a href="ShowAllContact">Show table</a><br>
+<a href="addContactSpring.jsp">Spring</a><br>
   </div>
   
   <div class="mainBody" style="overflow:auto">
